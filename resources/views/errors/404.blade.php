@@ -7,9 +7,9 @@
 			<div class="row">
 				<div class="col-md-12 x-text text-center">
 					<h1>404</h1>
-					<p>We are sorry, the page you've requested is not available. </p>
+					<p>{{trans('site.404-error-page')}}. </p>
 					 
-					<a href="{{ url('/') }}"><i class="fa fa-home"></i> Go To Homepage</a>
+					<a href="{{ url('/') }}"><i class="fa fa-home"></i> {{trans('site.go-to-homepage')}}</a>
 				</div>
 			</div><!-- /.row -->
 		</div><!-- /.sigin-in-->

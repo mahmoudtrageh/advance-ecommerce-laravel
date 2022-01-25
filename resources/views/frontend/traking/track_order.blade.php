@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-Order Traking Page 
+{{trans('site.order-tracking-page')}}
 @endsection
 
 <style type="text/css">
@@ -165,37 +165,37 @@ Order Traking Page
 
 <div class="container">
     <article class="card">
-        <header class="card-header"> <b> My Orders / Tracking </b> </header>
-        <div class="card-body">
+        <header class="card-header"> <h3> {{trans('site.my-orders')}} / {{trans('site.tracking')}} </h3> </header>
+        <div class="card-body" style="padding:0 10px;">
            
-     <div class="row" style="margin-left: 30px; margin-top: 20px;">
+     <div class="row" style="margin: 40px 0 40px 30px;">
      	<div class="col-md-2">
-     		<b> Invoice Number </b><br>
+     		<b> {{trans('site.invoice-number')}} </b><br>
      		{{ $track->invoice_no }}
      	</div> <!-- // end col md 2 -->
 
      	<div class="col-md-2">
-     	<b> Order Date </b><br>
+     	<b> {{trans('site.order-date')}}</b><br>
      		{{ $track->order_date }}
      	</div> <!-- // end col md 2 -->
 
      	<div class="col-md-2">
-     		<b> Shipping By - {{ $track->name }} </b><br>
+     		<b> {{trans('site.shipping-by')}} - {{ $track->name }} </b><br>
       {{ $track->division->division_name }} / {{ $track->district->district_name }}
      	</div> <!-- // end col md 2 -->
 
      	<div class="col-md-2">
-     		<b> User Mobile Number </b><br>
+     		<b> {{trans('site.user-mobile-number')}} </b><br>
      		{{ $track->phone }}
      	</div> <!-- // end col md 2 -->
 
      	<div class="col-md-2">
-     	<b> Payment Method  </b><br>
+     	<b> {{trans('site.payment-method')}}  </b><br>
      		{{ $track->payment_method  }}
      	</div> <!-- // end col md 2 -->
 
      	<div class="col-md-2">
-     		<b> Total Amount  </b><br>
+     		<b> {{trans('site.total-amount')}}  </b><br>
      		$ {{ $track->amount  }}
      	</div> <!-- // end col md 2 -->
      	
@@ -212,93 +212,93 @@ Order Traking Page
 
      @if($track->status == 'pending')
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-pending')}}</span> </div>
 
 
-<div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
+<div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> {{trans('site.order-confirmed')}}</span> </div>
 
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-processing')}} </span> </div>
 
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-picked')}}</span> </div>
 
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-shipped')}}</span> </div>
 
-     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.delivered')}} </span> </div>
 
 
 
   @elseif($track->status == 'confirm')
 
-  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-pending')}}</span> </div>
 
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
+<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-confirmed')}}</span> </div>
 
- <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
+ <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> {{trans('site.order-processing')}} </span> </div>
 
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-picked')}}</span> </div>
 
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-shipped')}}</span> </div>
 
-     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.delivered')}} </span> </div>
 
  @elseif($track->status == 'processing')
 
-  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-pending')}}</span> </div>
 
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
+<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-confirmed')}}</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> {{trans('site.order-processing')}}  </span> </div>
 
- <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
+ <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-picked')}}</span> </div>
 
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-shipped')}} </span> </div>
 
-     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.delivered')}} </span> </div>
 
 
 
  @elseif($track->status == 'picked')
 
-   <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+   <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-pending')}}</span> </div>
 
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
+<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-confirmed')}}</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> {{trans('site.order-processing')}}  </span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-picked')}}</span> </div>
 
-    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
+    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-shipped')}} </span> </div>
 
-     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+     <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.delivered')}}</span> </div>
 
 
  @elseif($track->status == 'shipped')
 
-    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-pending')}}</span> </div>
 
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
+<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-confirmed')}}</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> {{trans('site.order-processing')}}  </span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-picked')}}</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-shipped')}} </span> </div>
 
-   <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+   <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.delivered')}}</span> </div>
 
     @elseif($track->status == 'delivered')
 
-  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-pending')}}</span> </div>
 
-<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Confirmed</span> </div>
+<div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-confirmed')}}</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> Order Processing  </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text"> {{trans('site.order-processing')}}  </span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Picked</span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-picked')}}</span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Shipped </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.order-shipped')}} </span> </div>
 
- <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Delivered </span> </div>
+ <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">{{trans('site.delivered')}} </span> </div>
 
      @endif  
 

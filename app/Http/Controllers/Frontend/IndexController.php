@@ -21,7 +21,7 @@ class IndexController extends Controller
 {
     public function index(){
     	$blogpost = BlogPost::latest()->get();
-    	$products = Product::where('status',1)->orderBy('id','DESC')->limit(6)->get();
+    	$products = Product::where('status',1)->orderBy('id','DESC')->get();
     	$sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
     	$categories = Category::orderBy('category_name_en','ASC')->get();
 
@@ -139,8 +139,9 @@ class IndexController extends Controller
 		$multiImag = MultiImg::where('product_id',$id)->get();
 
 		$cat_id = $product->category_id;
+		$category = Category::findOrFail($cat_id);
 		$relatedProduct = Product::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->get();
-	 	return view('frontend.product.product_details',compact('categories', 'product','multiImag','product_color_en','product_color_hin','product_size_en','product_size_hin','relatedProduct'));
+	 	return view('frontend.product.product_details',compact('category','categories', 'product','multiImag','product_color_en','product_color_hin','product_size_en','product_size_hin','relatedProduct'));
 
 	}
 

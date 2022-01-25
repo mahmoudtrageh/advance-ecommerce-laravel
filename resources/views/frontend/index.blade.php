@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-Home Easy Online Shop
+{{trans('site.home')}}
 @endsection
 
 
@@ -28,7 +28,7 @@ Home Easy Online Shop
         <!-- ============================================== SPECIAL OFFER ============================================== -->
         
         <div class="sidebar-widget outer-bottom-small wow fadeInUp">
-          <h3 class="section-title">Special Offer</h3>
+          <h3 class="section-title">{{trans('site.special-offer')}}</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
 
@@ -52,7 +52,7 @@ Home Easy Online Shop
         <!-- /.col -->
         <div class="col col-xs-7">
           <div class="product-info">
-            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
             <div class="rating rateit-small"></div>
  <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
             <!-- /.product-price --> 
@@ -103,7 +103,7 @@ Home Easy Online Shop
         <!-- ============================================== SPECIAL DEALS ============================================== -->
         
         <div class="sidebar-widget outer-bottom-small wow fadeInUp">
-          <h3 class="section-title">Special Deals</h3>
+          <h3 class="section-title">{{trans('site.special-deals')}}</h3>
           <div class="sidebar-widget-body outer-top-xs">
             <div class="owl-carousel sidebar-carousel special-offer custom-carousel owl-theme outer-top-xs">
 
@@ -126,7 +126,7 @@ Home Easy Online Shop
             <!-- /.col -->
             <div class="col col-xs-7">
               <div class="product-info">
-                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
                 <div class="rating rateit-small"></div>
                 <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
                 <!-- /.product-price --> 
@@ -259,12 +259,12 @@ Home Easy Online Shop
 
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
           <div class="more-info-tab clearfix ">
-            <h3 class="new-product-title pull-left">New Products</h3>
+            <h3 class="new-product-title pull-left">{{trans('site.new-products')}}</h3>
             <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-              <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
+              <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">{{trans('site.all')}}</a></li>
 
               @foreach($categories as $category)
-  <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
+  <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">@if(session()->get('lang') == 'hi'){{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif</a></li>
               @endforeach
               <!-- <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a></li>
 
@@ -295,7 +295,7 @@ Home Easy Online Shop
                           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -306,7 +306,7 @@ Home Easy Online Shop
                         
         <div class="product-info text-left">
           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
             </a></h3>
           <div class="rating rateit-small"></div>
           <div class="description"></div>
@@ -328,14 +328,14 @@ Home Easy Online Shop
               <li class="add-cart-button btn-group">
 
 
-           <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+           <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+        <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
       </li>
 
       
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
             </ul>
           </div>
@@ -389,7 +389,7 @@ Home Easy Online Shop
                           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -400,7 +400,7 @@ Home Easy Online Shop
                         
         <div class="product-info text-left">
           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
             </a></h3>
           <div class="rating rateit-small"></div>
           <div class="description"></div>
@@ -421,14 +421,14 @@ Home Easy Online Shop
             <ul class="list-unstyled">
               <li class="add-cart-button btn-group">
 
-        <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+        <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+        <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
       </li>
 
       
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
 
             </ul>
@@ -445,7 +445,7 @@ Home Easy Online Shop
                   <!-- /.item -->
 
                   @empty
-                  <h5 class="text-danger">No Product Found</h5>
+                 
 
                   @endforelse<!--  // end all optionproduct foreach  -->
 
@@ -499,7 +499,7 @@ Home Easy Online Shop
         <!-- == === FEATURED PRODUCTS == ==== -->
 
         <section class="section featured-product wow fadeInUp">
-          <h3 class="section-title">Featured products</h3>
+          <h3 class="section-title">{{trans('site.featured-products')}}</h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
 
 
@@ -518,7 +518,7 @@ Home Easy Online Shop
                           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -529,7 +529,7 @@ Home Easy Online Shop
                         
         <div class="product-info text-left">
           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
             </a></h3>
           <div class="rating rateit-small"></div>
           <div class="description"></div>
@@ -550,14 +550,14 @@ Home Easy Online Shop
     <ul class="list-unstyled">
       <li class="add-cart-button btn-group">
        
-        <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+        <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+        <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
       </li>
 
       
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
       
 
@@ -590,7 +590,7 @@ Home Easy Online Shop
 
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">
-@if(session()->get('language') == 'hindi') {{ $skip_category_0->category_name_hin }} @else {{ $skip_category_0->category_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $skip_category_0->category_name_hin }} @else {{ $skip_category_0->category_name_en }} @endif
             </h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
 
@@ -610,7 +610,7 @@ Home Easy Online Shop
                           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -621,7 +621,7 @@ Home Easy Online Shop
                         
         <div class="product-info text-left">
           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
             </a></h3>
           <div class="rating rateit-small"></div>
           <div class="description"></div>
@@ -643,14 +643,14 @@ Home Easy Online Shop
               <li class="add-cart-button btn-group">
 
 
-          <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+          <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+        <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
       </li>
 
       
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
 
             </ul>
@@ -685,7 +685,7 @@ Home Easy Online Shop
 
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">
-@if(session()->get('language') == 'hindi') {{ $skip_category_1->category_name_hin }} @else {{ $skip_category_1->category_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $skip_category_1->category_name_hin }} @else {{ $skip_category_1->category_name_en }} @endif
             </h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
 
@@ -705,7 +705,7 @@ Home Easy Online Shop
                           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -716,7 +716,7 @@ Home Easy Online Shop
                         
         <div class="product-info text-left">
           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
             </a></h3>
           <div class="rating rateit-small"></div>
           <div class="description"></div>
@@ -738,14 +738,14 @@ Home Easy Online Shop
               <li class="add-cart-button btn-group">
 
 
-           <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+           <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+        <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
       </li>
 
       
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
 
             </ul>
@@ -819,7 +819,7 @@ Home Easy Online Shop
 
         <section class="section featured-product wow fadeInUp">
           <h3 class="section-title">
-@if(session()->get('language') == 'hindi') {{ $skip_brand_1->brand_name_hin }} @else {{ $skip_brand_1->brand_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $skip_brand_1->brand_name_hin }} @else {{ $skip_brand_1->brand_name_en }} @endif
             </h3>
           <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
 
@@ -839,7 +839,7 @@ Home Easy Online Shop
                           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -850,7 +850,7 @@ Home Easy Online Shop
                         
         <div class="product-info text-left">
           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
             </a></h3>
           <div class="rating rateit-small"></div>
           <div class="description"></div>
@@ -871,14 +871,14 @@ Home Easy Online Shop
             <ul class="list-unstyled">
               <li class="add-cart-button btn-group">
                 
-               <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+               <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+        <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
       </li>
 
       
 
-        <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+        <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 
             </ul>
           </div>
@@ -913,7 +913,7 @@ Home Easy Online Shop
         
         <!-- ============================================== BLOG SLIDER ============================================== -->
         <section class="section latest-blog outer-bottom-vs wow fadeInUp">
-          <h3 class="section-title">latest form blog</h3>
+          <h3 class="section-title">{{trans('site.latest-from-blog')}}</h3>
           <div class="blog-slider-container outer-top-xs">
             <div class="owl-carousel blog-slider custom-carousel">
               
@@ -922,20 +922,20 @@ Home Easy Online Shop
               <div class="item">
                 <div class="blog-post">
                   <div class="blog-post-image">
-                    <div class="image"> <a href="blog.html"><img src="{{ asset($blog->post_image) }}" alt=""></a> </div>
+                    <div class="image"> <a href="{{ route('post.details',$blog->id) }}"><img src="{{ asset($blog->post_image) }}" alt=""></a> </div>
                   </div>
                   <!-- /.blog-post-image -->
                   
                   <div class="blog-post-info text-left">
-                    <h3 class="name"><a href="#">@if(session()->get('language') == 'hindi') {{ $blog->post_title_hin }} @else {{ $blog->post_title_en }} @endif</a></h3>
+                    <h3 class="name"><a href="{{ route('post.details',$blog->id) }}">@if(session()->get('lang') == 'hi') {{ $blog->post_title_hin }} @else {{ $blog->post_title_en }} @endif</a></h3>
 
 
                     <span class="info">{{ Carbon\Carbon::parse($blog->created_at)->diffForHumans()  }}</span>
 
-                    <p class="text">@if(session()->get('language') == 'hindi') {!! Str::limit($blog->post_details_hin, 100 )  !!} @else {!! Str::limit($blog->post_details_en, 100 )  !!} @endif</p>
+                    <p class="text">@if(session()->get('lang') == 'hi') {!! Str::limit($blog->post_details_hin, 100 )  !!} @else {!! Str::limit($blog->post_details_en, 100 )  !!} @endif</p>
 
 
-                    <a href="{{ route('post.details',$blog->id) }}" class="lnk btn btn-primary">Read more</a> </div>
+                    <a href="{{ route('post.details',$blog->id) }}" class="lnk btn btn-primary">{{trans('site.read-more')}}</a> </div>
                   <!-- /.blog-post-info --> 
                   
                 </div>

@@ -16,15 +16,15 @@
     
 
    @auth
-   <a href="{{ route('login') }}"><i class="icon fa fa-user"></i>User Profile</a>
+   <a href="{{ route('login') }}"><i class="icon fa fa-user"></i>{{trans('site.user-profile')}}</a>
    @else
-   <a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Login/Register</a>
+   <a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>{{trans('site.login')}}/{{trans('site.register')}}</a>
    @endauth
   </li>
-   <li><a href="" type="button" data-toggle="modal" data-target="#ordertraking"><i class="icon fa fa-check"></i>Order Traking</a></li>
-   <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>checkout</a></li>
-   <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-   <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+   <li><a href="" type="button" data-toggle="modal" data-target="#ordertraking"><i class="icon fa fa-check"></i>{{trans('site.order-tracking')}}</a></li>
+   <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>{{trans('site.checkout')}}</a></li>
+   <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>{{trans('site.cart')}}</a></li>
+   <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>{{trans('site.whishlist')}}</a></li>
            
           </ul>
         </div>
@@ -40,13 +40,13 @@
               </ul>
             </li> --}}
  <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
-@if(session()->get('lang') == 'hi') भाषा: हिन्दी @else Language @endif
+  {{trans('site.language')}}
   </span><b class="caret"></b></a>
               <ul class="dropdown-menu">
          @if(session()->get('lang') == 'hi')       
-        <li><a href="{{route('site.change.lang',['lang'=>'en'])}}">English</a></li>
+        <li><a href="{{route('site.change.lang',['lang'=>'en'])}}">الإنجليزية</a></li>
         @else
-        <li><a href="{{route('site.change.lang',['lang'=>'hi'])}}">हिन्दी</a></li>
+        <li><a href="{{route('site.change.lang',['lang'=>'hi'])}}">Arabic</a></li>
          @endif      
               </ul>
             </li>
@@ -87,15 +87,15 @@
               <div class="control-group">
                 <ul class="categories-filter animate-dropdown">
                 <select name="category" class="form-control" required="" >
-                  <option value="" selected="" disabled="">اختر القسم</option>
+                  <option value="" selected="" disabled="">{{trans('site.choose-category')}}</option>
                   @if(isset($categories) && !empty($categories))
                   @foreach($categories as $category)
-             <option value="{{ $category->id }}">{{ $category->category_name_en }}</option>	
+             <option value="{{ $category->id }}">@if(session()->get('lang') == 'hi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif</option>	
                   @endforeach
                   @endif
                 </select>
               </ul>
-     <input class="search-field" onfocus="search_result_show()" onblur="search_result_hide()" id="search" name="search" placeholder="Search here..." />
+     <input class="search-field" onfocus="search_result_show()" onblur="search_result_hide()" id="search" name="search" placeholder="{{trans('site.search-here')}}..." />
                 <button class="search-button" type="submit"></button> </div>
             </form>
             <div id="searchProducts"></div>
@@ -113,7 +113,7 @@
             <div class="items-cart-inner">
               <div class="basket"> <i class="glyphicon glyphicon-shopping-cart"></i> </div>
     <div class="basket-item-count"><span class="count" id="cartQty"> </span></div>
-              <div class="total-price-basket"> <span class="lbl">cart -</span> 
+              <div class="total-price-basket"> <span class="lbl">{{trans('site.cart')}} -</span> 
                 <span class="total-price"> <span class="sign">$</span>
                 <span class="value" id="cartSubTotal"> </span> </span> </div>
             </div>
@@ -130,10 +130,10 @@
 
 
                 <div class="clearfix cart-total">
-                  <div class="pull-right"> <span class="text">Sub Total :</span>
+                  <div class="pull-right"> <span class="text">{{trans('site.sub-total')}} :</span>
                     <span class='price'  id="cartSubTotal">  </span> </div>
                   <div class="clearfix"></div>
-                  <a href="{{route('checkout')}}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a> </div>
+                  <a href="{{route('checkout')}}" class="btn btn-upper btn-primary btn-block m-t-20">{{trans('site.checkout')}}</a> </div>
                 <!-- /.cart-total--> 
                 
               </li>
@@ -160,14 +160,14 @@
       <div class="yamm navbar navbar-default" role="navigation">
         <div class="navbar-header">
        <button data-target="#mc-horizontal-menu-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button"> 
-       <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+       <span class="sr-only">{{trans('site.toggle-navigation')}}</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         </div>
         <div class="nav-bg-class">
           <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
             <div class="nav-outer">
               <ul class="nav navbar-nav">
   <li class="active dropdown yamm-fw"> <a href="{{ url('/') }}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
-@if(session()->get('lang') == 'hi') घर @else Home @endif
+    {{trans('site.home')}}
   </a> </li>
 
 <!--   // Get Category Table Data -->
@@ -228,10 +228,10 @@
   @endforeach <!-- // End Category Foreach -->
 
 
-     <li> <a href="{{ route('shop.page') }}">Shop</a> </li>
+     <li> <a href="{{ route('shop.page') }}">{{trans('site.shop')}}</a> </li>
                
 
- <li class="dropdown  navbar-right special-menu"> <a href="{{ route('home.blog') }}">Blog</a> </li>
+ <li class="dropdown  navbar-right special-menu"> <a href="{{ route('home.blog') }}">{{trans('site.blog')}}</a> </li>
 
 
               </ul>
@@ -258,7 +258,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Track Your Order </h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{trans('site.track-your-order')}} </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -268,11 +268,11 @@
         <form method="post" action="{{ route('order.tracking') }}">
           @csrf
          <div class="modal-body">
-          <label>Invoice Code</label>
-          <input type="text" name="code" required="" class="form-control" placeholder="Your Order Invoice Number">           
+          <label>{{trans('site.invoice-code')}}</label>
+          <input type="text" name="code" required="" class="form-control" placeholder="{{trans('site.your-order-invoice-number')}}">           
          </div>
 
-         <button class="btn btn-danger" type="submit" style="margin-left: 17px;"> Track Now </button>
+         <button class="btn btn-danger" type="submit" style="margin-left: 17px;"> {{trans('site.track-now')}} </button>
           
         </form> 
 

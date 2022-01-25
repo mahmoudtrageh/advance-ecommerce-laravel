@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-Product Search Page 
+{{trans('site.product-search-page')}} 
 @endsection
 
 
@@ -16,8 +16,8 @@ Product Search Page
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
-        <li><a href="#">Home</a></li>
-        <li class='active'>Handbags</li>
+        <li><a href="#">{{trans('site.home')}}</a></li>
+        <li class='active'>{{ $item }} </li>
       </ul>
     </div>
     <!-- /.breadcrumb-inner --> 
@@ -41,9 +41,9 @@ Product Search Page
           <div class="sidebar-filter"> 
             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
             <div class="sidebar-widget wow fadeInUp">
-              <h3 class="section-title">shop by</h3>
+              <h3 class="section-title">{{trans('site.shop-by')}}</h3>
               <div class="widget-header">
-                <h4 class="widget-title">Category</h4>
+                <h4 class="widget-title">{{trans('site.category')}}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <div class="accordion">
@@ -52,7 +52,7 @@ Product Search Page
  @foreach($categories as $category)
 	<div class="accordion-group">
 	<div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed"> 
-		@if(session()->get('language') == 'hindi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif </a> </div>
+		@if(session()->get('lang') == 'hi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif </a> </div>
 	<!-- /.accordion-heading -->
 	<div class="accordion-body collapse" id="collapse{{ $category->id }}" style="height: 0px;">
 	  <div class="accordion-inner">
@@ -64,7 +64,7 @@ Product Search Page
    @foreach($subcategories as $subcategory)
 	    <ul>
 	      <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en ) }}">
-	      	@if(session()->get('language') == 'hindi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif</a></li>
+	      	@if(session()->get('lang') == 'hi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif</a></li>
 	      
 	    </ul>
 	@endforeach 
@@ -99,7 +99,7 @@ Product Search Page
             <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
+                <h4 class="widget-title">{{trans('site.price-filter')}}</h4>
               </div>
               <form action="{{ route('search.shop.filter', ['category' => $category_id, 'item' => $item]) }}" method="post">
                 @csrf
@@ -125,7 +125,7 @@ Product Search Page
                             <input name="price" type="text" class="price-slider" value="" >
                           </div>
                           <!-- /.price-range-holder --> 
-                          <input type="submit" class="lnk btn btn-primary" value="shop now"> </div>
+                          <input type="submit" class="lnk btn btn-primary" value="{{trans('site.shop-now')}}"> </div>
                         <!-- /.sidebar-widget-body --> 
                       </div>
                     </form>
@@ -161,9 +161,9 @@ Product Search Page
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
             <div class="container-fluid">
               <div class="caption vertical-top text-left">
-                <div class="big-text"> Big Sale </div>
+                {{-- <div class="big-text"> Big Sale </div>
                 <div class="excerpt hidden-sm hidden-md"> Save up to 49% off </div>
-                <div class="excerpt-normal hidden-sm hidden-md"> Lorem ipsum dolor sit amet, consectetur adipiscing elit </div>
+                <div class="excerpt-normal hidden-sm hidden-md"> Lorem ipsum dolor sit amet, consectetur adipiscing elit </div> --}}
               </div>
               <!-- /.caption --> 
             </div>
@@ -171,7 +171,7 @@ Product Search Page
           </div>
         </div>
       
-        <h4><b>Total Search </b><span class="badge badge-danger" style="background: #FF0000;"> {{ count($products) }} </span> Items  </h4>
+        <h4><b>{{trans('site.search-result')}} </b><span class="badge badge-danger" style="background: #FF0000;"> {{ count($products) }} </span> {{trans('site.products')}}  </h4>
 
 
      
@@ -180,8 +180,8 @@ Product Search Page
             <div class="col col-sm-6 col-md-2">
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
-                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>{{trans('site.grid')}}</a> </li>
+                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>{{trans('site.list')}}</a></li>
                 </ul>
               </div>
               <!-- /.filter-tabs --> 
@@ -219,7 +219,7 @@ Product Search Page
           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -255,11 +255,11 @@ Product Search Page
           <div class="action">
             <ul class="list-unstyled">
               <li class="add-cart-button btn-group">
-                <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+                <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
               </li>
-              <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+              <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
             </ul>
           </div>
           <!-- /.action --> 
@@ -333,16 +333,15 @@ Product Search Page
             
             <!-- /.product-price -->
             <div class="description m-t-10">
-            	@if(session()->get('language') == 'hindi') {{ $product->short_descp_hin }} @else {{ $product->short_descp_en }} @endif</div>
+            	@if(session()->get('lang') == 'hi') {{ $product->short_descp_hin }} @else {{ $product->short_descp_en }} @endif</div>
             <div class="cart clearfix animate-effect">
               <div class="action">
                 <ul class="list-unstyled">
                   <li class="add-cart-button btn-group">
                     <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                    <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
                   </li>
-                  <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                  <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                  <li class="lnk wishlist"> <a class="add-to-cart" id="{{ $product->id }}" onclick="addToWishList(this.id)" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
                 </ul>
               </div>
               <!-- /.action --> 
@@ -365,7 +364,7 @@ Product Search Page
                       <!-- /.product-list-row -->
                       <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif

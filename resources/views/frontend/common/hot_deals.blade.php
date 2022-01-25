@@ -4,7 +4,7 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
      @endphp
 
      <div class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
-          <h3 class="section-title">hot deals</h3>
+          <h3 class="section-title">{{trans('site.hot-deals')}}</h3>
           <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
 
 
@@ -21,16 +21,16 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
         @endphp   
                   
               @if ($product->discount_price == NULL)
-                <div class="tag new"><span>new</span></div>
+                <div class="tag new"><span>{{trans('site.new')}}</span></div>
               @else
               <div class="sale-offer-tag"><span>{{ round($discount) }}%<br>
-                    off</span></div>
+                {{trans('site.off')}}</span></div>
               @endif
                   
 
 
 
-                  <div class="timing-wrapper">
+                  {{-- <div class="timing-wrapper">
                     <div class="box-wrapper">
                       <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
                     </div>
@@ -43,13 +43,13 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                     <div class="box-wrapper hidden-md">
                       <div class="seconds box"> <span class="key">60</span> <span class="value">SEC</span> </div>
                     </div>
-                  </div>
-                </div>
+                  </div>--}}
+                </div> 
                 <!-- /.hot-deal-wrapper -->
                 
   <div class="product-info text-left m-t-20">
     <h3 class="name"><a href="detail.html">
-      @if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+      @if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
     <div class="rating rateit-small"></div>
 
      @if ($product->discount_price == NULL)
@@ -69,7 +69,7 @@ $hot_deals = App\Models\Product::where('hot_deals',1)->where('discount_price','!
                     <div class="add-cart-button btn-group">
                       <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+        <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
                     </div>
                   </div>
                   <!-- /.action --> 

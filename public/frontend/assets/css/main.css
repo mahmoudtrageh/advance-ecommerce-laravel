@@ -3528,8 +3528,8 @@ age-container #owl-main .owl-next {
   font-family: 'Open Sans', sans-serif, sans-serif;
   font-size: 12px;
   line-height: 24px;
-  margin-left: 9px;
-  margin-right: -4px;
+  margin-left: 10px;
+  margin-right: 0px;
   padding: 0px;
 }
 .breadcrumb ul li:last-child:after {

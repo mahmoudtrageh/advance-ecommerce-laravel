@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-My Cart Page 
+{{trans('site.cart')}} 
 @endsection
 
 
@@ -10,8 +10,8 @@ My Cart Page
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>MyCart</li>
+				<li><a href="home.html">{{trans('site.home')}}</a></li>
+				<li class='active'>{{trans('site.cart')}}</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -26,13 +26,13 @@ My Cart Page
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="cart-romove item">Image</th>
-					<th class="cart-description item">Name</th>
-					<th class="cart-product-name item">Color</th>
-					<th class="cart-edit item">Size</th>
-					<th class="cart-qty item">Quantity</th>
-					<th class="cart-sub-total item">Subtotal</th>
-					<th class="cart-total last-item">Remove</th>
+					<th class="cart-romove item">{{trans('site.image')}}</th>
+					<th class="cart-description item">{{trans('site.name')}}</th>
+					<th class="cart-product-name item">{{trans('site.color')}}</th>
+					<th class="cart-edit item">{{trans('site.size')}}</th>
+					<th class="cart-qty item">{{trans('site.quantity')}}</th>
+					<th class="cart-sub-total item">{{trans('site.sub-total')}}</th>
+					<th class="cart-total last-item">{{trans('site.remove')}}</th>
 				</tr>
 			</thead><!-- /thead -->
 			<tbody id="cartPage">
@@ -58,8 +58,8 @@ My Cart Page
 		<thead>
 			<tr>
 				<th>
-					<span class="estimate-title">Discount Code</span>
-					<p>Enter your coupon code if you have one..</p>
+					<span class="estimate-title">{{trans('site.discount-code')}}</span>
+					<p>{{trans('site.enter-coupon-code')}}..</p>
 				</th>
 			</tr>
 		</thead>
@@ -67,10 +67,10 @@ My Cart Page
 <tr>
 	<td>
 		<div class="form-group">
-			<input type="text" class="form-control unicase-form-control text-input" placeholder="You Coupon.." id="coupon_name">
+			<input type="text" class="form-control unicase-form-control text-input" placeholder="{{trans('site.discount-code')}}.." id="coupon_name">
 		</div>
 		<div class="clearfix pull-right">
-			<button type="submit" class="btn-upper btn btn-primary" onclick="applyCoupon()">APPLY COUPON</button>
+			<button type="submit" class="btn-upper btn btn-primary" onclick="applyCoupon()">{{trans('site.apply-coupon')}}</button>
 		</div>
 	</td>
 </tr>
@@ -94,7 +94,7 @@ My Cart Page
 				<tr>
 					<td>
 						<div class="cart-checkout-btn pull-right">
-		 <a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
+		 <a href="{{ route('checkout') }}" type="submit" class="btn btn-primary checkout-btn">{{trans('site.proceed-to-checkout')}}</a>
 							 
 						</div>
 					</td>

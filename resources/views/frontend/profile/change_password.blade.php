@@ -16,8 +16,8 @@ $user = DB::table('users')->where('id',Auth::user()->id)->first();
 
 
 			<div class="col-md-6">
-  <div class="card">
-  	<h3 class="text-center"><span class="text-danger">Change Password</span><strong> </strong>   </h3>
+  <div class="card" style="margin-top: 90px">
+  	<h3 class="text-center"><span class="text-danger">{{trans('site.change-password')}}</span><strong> </strong>   </h3>
 
   	<div class="card-body">
   		
@@ -28,25 +28,25 @@ $user = DB::table('users')->where('id',Auth::user()->id)->first();
 
 
          <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Current Password <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">{{trans('site.current-password')}}<span> </span></label>
             <input type="password" id="current_password" name="oldpassword" class="form-control" >
         </div>
 
         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">New Password <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">{{trans('site.new-password')}}<span> </span></label>
             <input type="password" id="password" name="password" class="form-control">
         </div>
 
 
         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Confirm Password <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">{{trans('site.confirm-password')}}<span> </span></label>
             <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
         </div>
 
          
 
          <div class="form-group">            
-           <button type="submit" class="btn btn-danger">Update</button>
+           <button type="submit" class="btn btn-danger">{{trans('site.update')}}</button>
         </div>         
  
 

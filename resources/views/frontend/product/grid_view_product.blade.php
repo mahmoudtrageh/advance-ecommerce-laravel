@@ -13,7 +13,7 @@
           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -51,9 +51,9 @@
               <li class="add-cart-button btn-group">
                 <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
               </li>
-              <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+              <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
             </ul>
           </div>
           <!-- /.action --> 

@@ -2,7 +2,7 @@
 @section('content')
  
 @section('title')
-{{ $blogpost->post_title_en }}
+@if(session()->get('lang') == 'hi') {{ $blogpost->post_title_hin }} @else {{ $blogpost->post_title_en }} @endif
 @endsection
 
  
@@ -11,8 +11,8 @@
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
-				<li class='active'>{{ $blogpost->post_title_en }}</li>
+				<li><a href="#">{{trans('site.home')}}</a></li>
+				<li class='active'>@if(session()->get('lang') == 'hi') {{ $blogpost->post_title_hin }} @else {{ $blogpost->post_title_en }} @endif</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -27,18 +27,17 @@
 	<img class="img-responsive" src="{{ asset($blogpost->post_image) }}" alt="">
 	
 
-	<h1>@if(session()->get('language') == 'hindi') {{ $blogpost->post_title_hin }} @else {{ $blogpost->post_title_en }} @endif</h1>
+	<h1>@if(session()->get('lang') == 'hi') {{ $blogpost->post_title_hin }} @else {{ $blogpost->post_title_en }} @endif</h1>
 
 
 
 	 
 	<span class="date-time">{{ Carbon\Carbon::parse($blogpost->created_at)->diffForHumans()  }}</span>
 	
- <!-- Go to www.addthis.com/dashboard to customize your tools -->
-      <div class="addthis_inline_share_toolbox_8tvu"></div>
+
             
 
-	<p> @if(session()->get('language') == 'hindi') {!!  $blogpost->post_details_hin  !!} @else {!!  $blogpost->post_details_en  !!} @endif
+	<p> @if(session()->get('lang') == 'hi') {!!  $blogpost->post_details_hin  !!} @else {!!  $blogpost->post_details_en  !!} @endif
 	</p>
 
 
@@ -58,7 +57,7 @@
 
 
 
-			<div class="blog-write-comment outer-bottom-xs outer-top-xs">
+			{{-- <div class="blog-write-comment outer-bottom-xs outer-top-xs">
 	<div class="row">
 		<div class="col-md-12">
 			<h4>Leave A Comment</h4>
@@ -99,7 +98,7 @@
 			<button type="submit" class="btn-upper btn btn-primary checkout-page-button">Submit Comment</button>
 		</div>
 	</div>
-</div>
+</div> --}}
 				</div>
 				<div class="col-md-3 sidebar">
                 
@@ -109,7 +108,7 @@
 						<div class="search-area outer-bottom-small">
     <form>
         <div class="control-group">
-            <input placeholder="Type to search" class="search-field">
+            <input placeholder="{{trans('site.search-here')}}" class="search-field">
             <a href="#" class="search-button"></a>   
         </div>
     </form>
@@ -119,13 +118,13 @@
 
 		<!-- ======== ====CATEGORY======= === -->
 <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
-	<h3 class="section-title">Blog Category</h3>
+	<h3 class="section-title">{{trans('site.blog-category')}}</h3>
 	<div class="sidebar-widget-body m-t-10">
 		<div class="accordion">
 
 @foreach($blogcategory as $category)
 	    	 <ul class="list-group">
-  <a href="{{ url('blog/category/post/'.$category->id) }}"><li class="list-group-item">@if(session()->get('language') == 'hindi') {{ $category->blog_category_name_hin }} @else {{ $category->blog_category_name_en }} @endif</li></a>
+  <a href="{{ url('blog/category/post/'.$category->id) }}"><li class="list-group-item">@if(session()->get('lang') == 'hi') {{ $category->blog_category_name_hin }} @else {{ $category->blog_category_name_en }} @endif</li></a>
    
    </ul>
 @endforeach

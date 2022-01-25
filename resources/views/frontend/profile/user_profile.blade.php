@@ -13,8 +13,8 @@
 
 
 			<div class="col-md-6">
-  <div class="card">
-  	<h3 class="text-center"><span class="text-danger">Hi....</span><strong>{{ Auth::user()->name }}</strong> Update Your Profile  </h3>
+  <div class="card" style="margin-top: 90px;">
+  	<h3 class="text-center"><span class="text-danger">{{trans('site.profile-update')}}  </h3>
 
   	<div class="card-body">
   		
@@ -25,28 +25,28 @@
 
 
          <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Name <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">{{trans('site.name')}} <span> </span></label>
             <input type="text" name="name" class="form-control" value="{{ $user->name }}">
         </div>
 
         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Email <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">{{trans('site.email')}} <span> </span></label>
             <input type="email" name="email" class="form-control" value="{{ $user->email }}">
         </div>
 
 
         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Phone <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">{{trans('site.phone')}} <span> </span></label>
             <input type="text" name="phone" class="form-control" value="{{ $user->phone }}">
         </div>
 
          <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">User Image <span> </span></label>
+            <label class="info-title" for="exampleInputEmail1">{{trans('site.user-image')}}<span> </span></label>
             <input type="file" name="profile_photo_path" class="form-control">
         </div>
 
          <div class="form-group">            
-           <button type="submit" class="btn btn-danger">Update</button>
+           <button type="submit" class="btn btn-danger">{{trans('site.update')}}</button>
         </div>         
  
 

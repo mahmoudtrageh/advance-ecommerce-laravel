@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="module-heading">
-            <h4 class="module-title">Contact Us</h4>
+            <h4 class="module-title">{{trans('site.contact-us')}}</h4>
           </div>
           <!-- /.module-heading -->
           
@@ -39,15 +39,14 @@
         
         <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="module-heading">
-            <h4 class="module-title">Links</h4>
+            <h4 class="module-title">{{trans('site.links')}}</h4>
           </div>
           <!-- /.module-heading -->
           
           <div class="module-body">
             <ul class='list-unstyled'>
-              <li class="first"><a href="#" title="Contact us">About Us</a></li>
-              <li><a href="#" title="About us">Contact Us</a></li>
-              <li><a href="#" title="faq">Privacy Policy</a></li>
+              <li class="first"><a href="#" title="Contact us">{{trans('site.about-us')}}</a></li>
+              <li><a href="#" title="About us">{{trans('site.contact-us')}}</a></li>
             </ul>
           </div>
           <!-- /.module-body --> 
@@ -56,16 +55,16 @@
         
         <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="module-heading">
-            <h4 class="module-title">Follow us</h4>
+            <h4 class="module-title">{{trans('site.follow-us')}}</h4>
           </div>
           <!-- /.module-heading -->
           
           <div class="module-body">
             <ul class='list-unstyled'>
-              <li class="first"><a title="Your Account" href="#">Facebook</a></li>
-              <li><a title="Information" href="#">Instagram</a></li>
-              <li><a title="Addresses" href="#">Email</a></li>
-              <li><a title="Addresses" href="#">Whatsapp</a></li>
+              <li class="first"><a title="Facebook" href="#">{{trans('site.facebook')}}</a></li>
+              <li><a title="Instagram" href="#">{{trans('site.instagram')}}</a></li>
+              <li><a title="Email" href="#">{{trans('site.email')}}</a></li>
+              <li><a title="Whatsapp" href="#">{{trans('site.whatsapp')}}</a></li>
             </ul>
           </div>
           <!-- /.module-body --> 
@@ -75,15 +74,15 @@
         <div class="col-xs-12 col-sm-6 col-md-3">
            <!-- ============================================== NEWSLETTER ============================================== -->
         <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small">
-          <h3 class="section-title">Newsletters</h3>
+          <h3 class="section-title">{{trans('site.newsletters')}}</h3>
           <div class="sidebar-widget-body outer-top-xs">
-            <p>Sign Up for Our Newsletter!</p>
+            <p>{{trans('site.signup-for-our-newsletter')}}!</p>
             <form>
               <div class="form-group">
-                <label class="sr-only" for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Subscribe to our newsletter">
+                <label class="sr-only" for="exampleInputEmail1">{{trans('site.email')}}</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="{{trans('site.subscribe-to-our-newsletter')}}">
               </div>
-              <button class="btn btn-primary">Subscribe</button>
+              <button class="btn btn-primary">{{trans('site.subscribe')}}</button>
             </form>
           </div>
           <!-- /.sidebar-widget-body --> 

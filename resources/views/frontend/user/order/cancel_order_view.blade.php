@@ -1,6 +1,8 @@
 @extends('frontend.main_master')
 @section('content')
-
+@section('title')
+{{trans('site.cancel-orders')}}
+@endsection
 <div class="body-content">
 	<div class="container">
 		<div class="row">
@@ -14,35 +16,34 @@
         <div class="table-responsive">
           <table class="table">
             <tbody>
-  
+              
               <tr style="background: #e2e2e2;">
                 <td class="col-md-1">
-                  <label for=""> Date</label>
+                  <label for=""> {{trans('site.date')}}</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Total</label>
+                  <label for="">{{trans('site.total')}}</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Payment</label>
+                  <label for=""> {{trans('site.payment-method')}}</label>
                 </td>
 
 
                 <td class="col-md-2">
-                  <label for=""> Invoice</label>
+                  <label for=""> {{trans('site.invoice')}}</label>
                 </td>
 
                  <td class="col-md-2">
-                  <label for=""> Order</label>
+                  <label for=""> {{trans('site.order')}}</label>
                 </td>
 
                  <td class="col-md-1">
-                  <label for=""> Action </label>
+                  <label for=""> {{trans('site.action')}} </label>
                 </td>
                 
               </tr>
-
 
               @forelse($orders as $order)
        <tr>
@@ -71,16 +72,16 @@
                 </td>
 
          <td class="col-md-1">
-          <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
+          <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> {{trans('site.view')}}</a>
 
-           <a target="_blank" href="{{ url('user/invoice_download/'.$order->id ) }}" class="btn btn-sm btn-danger" style="margin-top: 5px;"><i class="fa fa-download" style="color: white;"></i> Invoice </a>
+           <a target="_blank" href="{{ url('user/invoice_download/'.$order->id ) }}" class="btn btn-sm btn-danger" style="margin-top: 5px;"><i class="fa fa-download" style="color: white;"></i> {{trans('site.invoice')}} </a>
           
         </td>
                 
               </tr>
 
               @empty
-              <h2 class="text-danger">Order Not Found</h2>
+              <h2 class="text-danger text-center">{{trans('site.order-not-found')}}</h2>
 
               @endforelse
 

@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-{{ $product->product_name_en }} Product Details
+@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_hin }} @endif | {{trans('site.product-details')}}
 @endsection
 
 <style>
@@ -39,9 +39,9 @@
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Clothing</a></li>
-				<li class='active'>Floral Print Buttoned</li>
+				<li><a href="#">{{trans('site.home')}}</a></li>
+				<li><a href="#">@if(session()->get('lang') == 'hi') {{ $category->category_name_hin }} @else {{ $category->category_name_hin }} @endif</a></li>
+				<li class='active'>@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_hin }} @endif</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -122,7 +122,7 @@
 
 
 							<h1 class="name" id="pname">
-@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
+@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
 							 </h1>
 							
 			<div class="rating-reviews m-t-20">
@@ -130,7 +130,7 @@
 					<div class="col-sm-3">
 						 
    @if($avarage == 0)
-   No Rating Yet 
+   {{trans('site.no-rating-yet')}} 
    @elseif($avarage == 1 || $avarage < 2)
 <span class="fa fa-star checked"></span>
 <span class="fa fa-star"></span>
@@ -171,13 +171,13 @@
 
 					<div class="col-sm-8">
 						<div class="reviews">
-							<a href="#" class="lnk">({{ count($reviewcount) }} Reviews)</a>
+							<a href="#" class="lnk">({{ count($reviewcount) }} {{trans('site.reviews')}})</a>
 						</div>
 					</div>
 				</div><!-- /.row -->		
 			</div><!-- /.rating-reviews -->
 
-							<div class="stock-container info-container m-t-10">
+							{{-- <div class="stock-container info-container m-t-10">
 								<div class="row">
 									<div class="col-sm-2">
 										<div class="stock-box">
@@ -190,10 +190,10 @@
 										</div>	
 									</div>
 								</div><!-- /.row -->	
-							</div><!-- /.stock-container -->
+							</div><!-- /.stock-container --> --}}
 
 <div class="description-container m-t-20">
-	@if(session()->get('language') == 'hindi') {{ $product->short_descp_hin }} @else {{ $product->short_descp_en }} @endif
+	@if(session()->get('lang') == 'hi') {{ $product->short_descp_hin }} @else {{ $product->short_descp_en }} @endif
 </div><!-- /.description-container -->
 
 							<div class="price-container info-container m-t-20">
@@ -215,13 +215,10 @@
 
 		<div class="col-sm-6">
 			<div class="favorite-button m-t-10">
-				<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="#">
+				<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="#" id="{{ $product->id }}" onclick="addToWishList(this.id)">
 				    <i class="fa fa-heart"></i>
 				</a>
-				<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
-				   <i class="fa fa-signal"></i>
-				</a>
-				<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="E-mail" href="#">
+				<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="E-mail" href="#" >
 				    <i class="fa fa-envelope"></i>
 				</a>
 			</div>
@@ -240,12 +237,18 @@
 
 <div class="form-group">
 
-	<label class="info-title control-label">Choose Color <span> </span></label>
+	<label class="info-title control-label">{{trans('site.choose-color')}} <span> </span></label>
 	<select class="form-control unicase-form-control selectpicker" style="display: none;" id="color">
-		<option selected="" disabled="">--Choose Color--</option>
-		@foreach($product_color_en as $color)
+		<option selected="" disabled="">--{{trans('site.choose-color')}}--</option>
+		@if(session()->get('lang') == 'hi')
+		@foreach($product_color_hin as $color)
 		<option value="{{ $color }}">{{ ucwords($color) }}</option>
 		 @endforeach
+		 @else 
+		 @foreach($product_color_en as $color)
+		<option value="{{ $color }}">{{ ucwords($color) }}</option>
+		 @endforeach
+		 @endif
 	</select> 
 
 </div> <!-- // end form group -->
@@ -259,12 +262,18 @@
 
 	@else	
 
-	<label class="info-title control-label">Choose Size <span> </span></label>
+	<label class="info-title control-label">{{trans('site.choose-size')}}<span> </span></label>
 	<select class="form-control unicase-form-control selectpicker" style="display: none;" id="size">
-		<option selected="" disabled="">--Choose Size--</option>
-		@foreach($product_size_en as $size)
+		<option selected="" disabled="">--{{trans('site.choose-size')}}--</option>
+		@if(session()->get('lang') == 'hi')
+		@foreach($product_size_hin as $size)
 		<option value="{{ $size }}">{{ ucwords($size) }}</option>
 		 @endforeach
+		 @else
+		 @foreach($product_size_en as $size)
+		 <option value="{{ $size }}">{{ ucwords($size) }}</option>
+		  @endforeach
+		 @endif
 	</select> 
 
 	@endif
@@ -291,7 +300,7 @@
 		<div class="row">
 			
 			<div class="col-sm-2">
-				<span class="label">Qty :</span>
+				<span class="label">{{trans('site.qty')}} :</span>
 			</div>
 			
 			<div class="col-sm-2">
@@ -309,7 +318,7 @@
 			<input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
 
 			<div class="col-sm-7">
-				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
+				<button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i>{{trans('site.add-to-cart')}}</button>
 			</div>
 
 			
@@ -333,9 +342,9 @@
 					<div class="row">
 						<div class="col-sm-3">
 							<ul id="product-tabs" class="nav nav-tabs nav-tab-cell">
-								<li class="active"><a data-toggle="tab" href="#description">DESCRIPTION</a></li>
-								<li><a data-toggle="tab" href="#review">REVIEW</a></li>
-								<li><a data-toggle="tab" href="#tags">TAGS</a></li>
+								<li class="active"><a data-toggle="tab" href="#description">{{trans('site.description')}}</a></li>
+								<li><a data-toggle="tab" href="#review">{{trans('site.reviews')}}</a></li>
+								<li><a data-toggle="tab" href="#tags">{{trans('site.tags')}}</a></li>
 							</ul><!-- /.nav-tabs #product-tabs -->
 						</div>
 						<div class="col-sm-9">
@@ -344,7 +353,7 @@
 								
 <div id="description" class="tab-pane in active">
 	<div class="product-tab">
-		<p class="text">@if(session()->get('language') == 'hindi') 
+		<p class="text">@if(session()->get('lang') == 'hi') 
 			{!! $product->long_descp_hin !!} @else {!! $product->long_descp_en !!} @endif</p>
 	</div>	
 								</div><!-- /.tab-pane -->
@@ -353,7 +362,7 @@
 	<div class="product-tab">
 												
 		<div class="product-reviews">
-			<h4 class="title">Customer Reviews</h4>
+			<h4 class="title">{{trans('site.customer-reviews')}}</h4>
 
 @php
 $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(5)->get();
@@ -435,14 +444,14 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 										
 <div class="product-add-review">
-	<h4 class="title">Write your own review</h4>
+	<h4 class="title">{{trans('site.write-your-own-review')}}</h4>
 	<div class="review-table">
 		 
 	</div><!-- /.review-table -->
 											
 		<div class="review-form">
 			@guest
-<p> <b> For Add Product Review. You Need to Login First <a href="{{ route('login') }}">Login Here</a> </b> </p>
+<p> <b> {{trans('site.login-to-add-review')}} <a href="{{ route('login') }}">{{trans('site.login')}}</a> </b> </p>
 
 			@else 
 
@@ -458,16 +467,16 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 	<thead>
 		<tr>
 			<th class="cell-label">&nbsp;</th>
-			<th>1 star</th>
-			<th>2 stars</th>
-			<th>3 stars</th>
-			<th>4 stars</th>
-			<th>5 stars</th>
+			<th>1 {{trans('site.star')}}</th>
+			<th>2 {{trans('site.star')}}</th>
+			<th>3 {{trans('site.star')}}</th>
+			<th>4 {{trans('site.star')}}</th>
+			<th>5 {{trans('site.star')}}</th>
 		</tr>
 	</thead>	
 	<tbody>
 		<tr>
-			<td class="cell-label">Quality</td>
+			<td class="cell-label">{{trans('site.quality')}}</td>
 			<td><input type="radio" name="quality" class="radio" value="1"></td>
 			<td><input type="radio" name="quality" class="radio" value="2"></td>
 			<td><input type="radio" name="quality" class="radio" value="3"></td>
@@ -485,21 +494,21 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 		<div class="col-sm-6">
 			 
 			<div class="form-group">
-				<label for="exampleInputSummary">Summary <span class="astk">*</span></label>
+				<label for="exampleInputSummary">{{trans('site.summary')}} <span class="astk">*</span></label>
 	 <input type="text" name="summary" class="form-control txt" id="exampleInputSummary" placeholder="">
 			</div><!-- /.form-group -->
 		</div>
 
 		<div class="col-md-6">
 			<div class="form-group">
-				<label for="exampleInputReview">Review <span class="astk">*</span></label>
+				<label for="exampleInputReview">{{trans('site.review')}} <span class="astk">*</span></label>
  <textarea class="form-control txt txt-review" name="comment" id="exampleInputReview" rows="4" placeholder=""></textarea>
 			</div><!-- /.form-group -->
 		</div>
 	</div><!-- /.row -->
 	
 	<div class="action text-right">
-		<button type="submit" class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
+		<button type="submit" class="btn btn-primary btn-upper">{{trans('site.submit-review')}}</button>
 	</div><!-- /.action -->
 
 </form><!-- /.cnt-form -->
@@ -518,25 +527,25 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 <div id="tags" class="tab-pane">
 <div class="product-tag">
 	
-	<h4 class="title">Product Tags</h4>
+	<h4 class="title">{{trans('site.product-tags')}}</h4>
 	<form role="form" class="form-inline form-cnt">
 		<div class="form-container">
 
 			<div class="form-group">
-				<label for="exampleInputTag">Add Your Tags: </label>
+				<label for="exampleInputTag">{{trans('site.add-your-tags')}}: </label>
 				<input type="email" id="exampleInputTag" class="form-control txt">
 				
 
 			</div>
 
-			<button class="btn btn-upper btn-primary" type="submit">ADD TAGS</button>
+			<button class="btn btn-upper btn-primary" type="submit">{{trans('site.add-tags')}}</button>
 		</div><!-- /.form-container -->
 	</form><!-- /.form-cnt -->
 
 	<form role="form" class="form-inline form-cnt">
 		<div class="form-group">
 			<label>&nbsp;</label>
-			<span class="text col-md-offset-3">Use spaces to separate tags. Use single quotes (') for phrases.</span>
+			<span class="text col-md-offset-3">{{trans('site.add-tags-conditions')}}.</span>
 		</div>
 	</form><!-- /.form-cnt -->
 
@@ -550,7 +559,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 				<!-- ===== ======= UPSELL PRODUCTS ==== ========== -->
 <section class="section featured-product wow fadeInUp">
-	<h3 class="section-title">Releted products</h3>
+	<h3 class="section-title">{{trans('site.related-products')}}</h3>
 	<div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
 
 
@@ -573,7 +582,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 							  
 			  <div>
 				@if ($product->discount_price == NULL)
-				<div class="tag new"><span>new</span></div>
+				<div class="tag new"><span>{{trans('site.new')}}</span></div>
 				@else
 				<div class="tag hot"><span>{{ round($discount) }}%</span></div>
 				@endif
@@ -583,7 +592,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 		
 		<div class="product-info text-left">
 			<h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-				@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+				@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
 			<div class="rating rateit-small"></div>
 			<div class="description"></div>
 
@@ -611,14 +620,14 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 					<ul class="list-unstyled">
 						<li class="add-cart-button btn-group">
                 
-							<button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+							<button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
 					 
-					 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+					 <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
 				   </li>
 			 
 				   
 			 
-					 <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+					 <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
 			 
 					</ul>
 				</div><!-- /.action -->

@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('title')
-Cash On Delivery
+{{trans('site.cash-on-delivery')}}
 @endsection
 
  
@@ -13,8 +13,8 @@ Cash On Delivery
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>Cash On Delivery</li>
+				<li><a href="home.html">{{trans('site.home')}}</a></li>
+				<li class='active'>{{trans('site.cash-on-delivery')}}</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -38,7 +38,7 @@ Cash On Delivery
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Your Shopping Amount </h4>
+		    	<h4 class="unicase-checkout-title">{{trans('site.your-shopping-amount')}}</h4>
 		    </div>
 		    <div class="">
 				<ul class="nav nav-checkout-progress list-unstyled">
@@ -48,24 +48,24 @@ Cash On Delivery
 		 <li>
 		 	@if(Session::has('coupon'))
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>{{trans('site.sub-total')}}: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Coupon Name : </strong> {{ session()->get('coupon')['coupon_name'] }}
+<strong>{{trans('site.coupon-name')}} : </strong> {{ session()->get('coupon')['coupon_name'] }}
 ( {{ session()->get('coupon')['coupon_discount'] }} % )
  <hr>
 
- <strong>Coupon Discount : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
+ <strong>{{trans('site.coupon-discount')}} : </strong> ${{ session()->get('coupon')['discount_amount'] }} 
  <hr>
 
-  <strong>Grand Total : </strong> ${{ session()->get('coupon')['total_amount'] }} 
+  <strong>{{trans('site.grand-total')}} : </strong> ${{ session()->get('coupon')['total_amount'] }} 
  <hr>
 
 
 		 	@else
 
-<strong>SubTotal: </strong> ${{ $cartTotal }} <hr>
+<strong>{{trans('site.sub-total')}}: </strong> ${{ $cartTotal }} <hr>
 
-<strong>Grand Total : </strong> ${{ $cartTotal }} <hr>
+<strong>{{trans('site.grand-total')}} : </strong> ${{ $cartTotal }} <hr>
 
 
 		 	@endif 
@@ -94,7 +94,7 @@ Cash On Delivery
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-		    	<h4 class="unicase-checkout-title">Select Payment Method</h4>
+		    	<h4 class="unicase-checkout-title">{{trans('site.select-payment-method')}}</h4>
 		    </div>
 
 <form action="{{ route('cash.order') }}" method="post" id="payment-form">
@@ -121,7 +121,7 @@ Cash On Delivery
            
         </div>
         <br>
-        <button class="btn btn-primary">Submit Payment</button>
+        <button class="btn btn-primary">{{trans('site.submit-payment')}}</button>
         </form>
 		    
  

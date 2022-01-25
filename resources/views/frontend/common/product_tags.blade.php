@@ -9,12 +9,12 @@ $tags_hin = App\Models\Product::groupBy('product_tags_hin')->select('product_tag
 
 
      <div class="sidebar-widget product-tag wow fadeInUp">
-          <h3 class="section-title">Product tags</h3>
+          <h3 class="section-title">{{trans('site.product-tags')}}</h3>
           <div class="sidebar-widget-body outer-top-xs"> 
 
 <div class="tag-list"> 
 
-@if(session()->get('language') == 'hindi') 
+@if(session()->get('lang') == 'hi') 
 
 @foreach($tags_hin as $tag)
 <a class="item active" title="Phone" href="{{ url('product/tag/'.$tag->product_tags_hin) }}">

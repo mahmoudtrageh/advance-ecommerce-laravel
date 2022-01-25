@@ -1,6 +1,10 @@
 @extends('frontend.main_master')
 @section('content')
 
+@section('title')
+{{trans('site.order-details')}}
+@endsection
+
 <div class="body-content">
 	<div class="container">
 		<div class="row">
@@ -8,47 +12,47 @@
 
       <div class="col-md-5">
         <div class="card">
-          <div class="card-header"><h4>Shipping Details</h4></div>
+          <div class="card-header"><h4>{{trans('site.shipping-details')}}</h4></div>
          <hr>
          <div class="card-body" style="background: #E9EBEC;">
            <table class="table">
             <tr>
-              <th> Shipping Name : </th>
+              <th> {{trans('site.shipping-name')}} : </th>
                <th> {{ $order->name }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Phone : </th>
+              <th> {{trans('site.shipping-phone')}} : </th>
                <th> {{ $order->phone }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Email : </th>
+              <th> {{trans('site.shipping-email')}} : </th>
                <th> {{ $order->email }} </th>
             </tr>
 
              <tr>
-              <th> Division : </th>
+              <th> {{trans('site.division')}} : </th>
                <th> {{ $order->division->division_name }} </th>
             </tr>
 
              <tr>
-              <th> District : </th>
+              <th> {{trans('site.district')}} : </th>
                <th> {{ $order->district->district_name }} </th>
             </tr>
 
              <tr>
-              <th> State : </th>
+              <th> {{trans('site.state')}} : </th>
                <th>{{ $order->state->state_name }} </th>
             </tr>
 
             <tr>
-              <th> Post Code : </th>
+              <th>{{trans('site.post-code')}} : </th>
                <th> {{ $order->post_code }} </th>
             </tr>
 
             <tr>
-              <th> Order Date : </th>
+              <th> {{trans('site.order-date')}} : </th>
                <th> {{ $order->order_date }} </th>
             </tr>
              
@@ -65,24 +69,24 @@
 
 <div class="col-md-5">
         <div class="card">
-          <div class="card-header"><h4>Order Details
-<span class="text-danger"> Invoice : {{ $order->invoice_no }}</span></h4>
+          <div class="card-header"><h4>{{trans('site.order-details')}}
+<span class="text-danger"> {{trans('site.invoice')}} : {{ $order->invoice_no }}</span></h4>
           </div>
          <hr>
          <div class="card-body" style="background: #E9EBEC;">
            <table class="table">
             <tr>
-              <th>  Name : </th>
+              <th>  {{trans('site.name')}} : </th>
                <th> {{ $order->user->name }} </th>
             </tr>
 
              <tr>
-              <th>  Phone : </th>
+              <th>  {{trans('site.phone')}} : </th>
                <th> {{ $order->user->phone }} </th>
             </tr>
 
              <tr>
-              <th> Payment Type : </th>
+              <th> {{trans('site.payment-method')}} : </th>
                <th> {{ $order->payment_method }} </th>
             </tr>
 
@@ -92,17 +96,17 @@
             </tr>
 
              <tr>
-              <th> Invoice  : </th>
+              <th> {{trans('site.invoice-number')}}  : </th>
                <th class="text-danger"> {{ $order->invoice_no }} </th>
             </tr>
 
              <tr>
-              <th> Order Total : </th>
+              <th> {{trans('site.total')}} : </th>
                <th>{{ $order->amount }} </th>
             </tr>
 
             <tr>
-              <th> Order : </th>
+              <th> {{trans('site.order')}} : </th>
                <th>   
                 <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span> </th>
             </tr>
@@ -131,36 +135,36 @@
   
               <tr style="background: #e2e2e2;">
                 <td class="col-md-1">
-                  <label for=""> Image</label>
+                  <label for=""> {{trans('site.image')}}</label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Product Name </label>
+                  <label for=""> {{trans('site.product-name')}} </label>
                 </td>
 
                 <td class="col-md-3">
-                  <label for=""> Product Code</label>
+                  <label for=""> {{trans('site.product-code')}}</label>
                 </td>
 
 
                 <td class="col-md-2">
-                  <label for=""> Color </label>
+                  <label for=""> {{trans('site.color')}} </label>
                 </td>
 
                  <td class="col-md-2">
-                  <label for=""> Size </label>
+                  <label for=""> {{trans('site.size')}} </label>
                 </td>
 
                  <td class="col-md-1">
-                  <label for=""> Quantity </label>
+                  <label for=""> {{trans('site.quantity')}} </label>
                 </td>
 
                 <td class="col-md-1">
-                  <label for=""> Price </label>
+                  <label for=""> {{trans('site.price')}} </label>
                 </td>
 
                  <td class="col-md-1">
-                  <label for=""> Download </label>
+                  <label for=""> {{trans('site.download')}} </label>
                 </td>
                 
               </tr>
@@ -206,13 +210,13 @@ $file = App\Models\Product::where('id',$item->product_id)->first();
              <td class="col-md-1">
               @if($order->status == 'pending')  
               <strong>
- <span class="badge badge-pill badge-success" style="background: #418DB9;"> No File</span>  </strong> 
+ <span class="badge badge-pill badge-success" style="background: #418DB9;"> {{trans('site.no-file')}}</span>  </strong> 
                 
               @elseif($order->status == 'confirm')  
 
 <a target="_blank" href="{{ asset('upload/pdf/'.$file->digital_file) }}">  
   <strong>
- <span class="badge badge-pill badge-success" style="background: #FF0000;"> Download Ready</span>  </strong> </a> 
+ <span class="badge badge-pill badge-success" style="background: #FF0000;"> {{trans('site.download-ready')}}</span>  </strong> </a> 
               @endif
 
 
@@ -254,16 +258,16 @@ $file = App\Models\Product::where('id',$item->product_id)->first();
         @csrf
 
   <div class="form-group">
-    <label for="label"> Order Return Reason:</label>
-    <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">Return Reason</textarea>    
+    <label for="label"> {{trans('site.order-return-reason')}}:</label>
+    <textarea name="return_reason" id="" class="form-control" cols="30" rows="05">{{trans('site.return-reason')}}</textarea>    
   </div>
 
-  <button type="submit" class="btn btn-danger">Order Return</button>
+  <button type="submit" class="btn btn-danger">{{trans('site.order-return')}}</button>
 
 </form>
    @else
 
-   <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this product</span>
+   <span class="badge badge-pill badge-warning" style="background: red">{{trans('site.sent-return-for-this-product')}}</span>
    
    @endif 
 

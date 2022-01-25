@@ -15,7 +15,7 @@
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
 						  <img src="{{ asset('backend/images/logo-dark.png') }}" alt="">
-						  <h3><b>Easy</b> Shop</h3>
+						  <h3>{{trans('admin.site-name')}}</h3>
 					 </div>
 				</a>
 			</div>
@@ -27,7 +27,7 @@
 		<li class="{{ ($route == 'dashboard')? 'active':'' }}">
           <a href="{{ url('admin/dashboard') }}">
             <i data-feather="pie-chart"></i>
-			<span>Dashboard</span>
+			<span>{{trans('admin.dashboard')}}</span>
           </a>
         </li>  
 		
@@ -55,13 +55,13 @@
         <li class="treeview {{ ($prefix == '/brand')?'active':'' }}  ">
           <a href="#">
             <i data-feather="message-circle"></i>
-            <span>Brands</span>
+            <span>{{trans('admin.brands')}}</span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'all.brand')? 'active':'' }}"><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
+            <li class="{{ ($route == 'all.brand')? 'active':'' }}"><a href="{{ route('all.brand') }}"><i class="ti-more"></i>{{trans('admin.all-brands')}}</a></li>
             
           </ul>
         </li> 
@@ -71,15 +71,15 @@
        @if($category == true)
         <li class="treeview {{ ($prefix == '/category')?'active':'' }}  ">
           <a href="#">
-            <i data-feather="mail"></i> <span>Category </span>
+            <i data-feather="mail"></i> <span>{{trans('admin.category')}} </span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-         <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>All Category</a></li>
-         <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>All SubCategory</a></li>
-<li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>All Sub->SubCategory</a></li>
+         <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>{{trans('admin.all-category')}}</a></li>
+         <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>{{trans('admin.all-sub-category')}}</a></li>
+<li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>{{trans('admin.all-sub-sub-category')}}</a></li>
 
 
                       </ul>
@@ -93,15 +93,15 @@
         <li class="treeview {{ ($prefix == '/product')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Products</span>
+            <span>{{trans('admin.products')}}</span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'add-product')? 'active':'' }}"><a href="{{ route('add-product') }}"><i class="ti-more"></i>Add Products</a></li>
+            <li class="{{ ($route == 'add-product')? 'active':'' }}"><a href="{{ route('add-product') }}"><i class="ti-more"></i>{{trans('admin.add-products')}}</a></li>
 
-             <li class="{{ ($route == 'manage-product')? 'active':'' }}"><a href="{{ route('manage-product') }}"><i class="ti-more"></i>Manage Products</a></li>
+             <li class="{{ ($route == 'manage-product')? 'active':'' }}"><a href="{{ route('manage-product') }}"><i class="ti-more"></i>{{trans('admin.manage-products')}}</a></li>
              
           </ul>
         </li> 		  
@@ -115,13 +115,13 @@
          <li class="treeview {{ ($prefix == '/slider')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Slider</span>
+            <span>{{trans('admin.slider')}}</span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'manage-slider')? 'active':'' }}"><a href="{{ route('manage-slider') }}"><i class="ti-more"></i>Manage Slider</a></li>
+            <li class="{{ ($route == 'manage-slider')? 'active':'' }}"><a href="{{ route('manage-slider') }}"><i class="ti-more"></i>{{trans('admin.manage-slider')}}</a></li>
 
              
              
@@ -136,13 +136,13 @@
          <li class="treeview {{ ($prefix == '/coupons')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Coupons</span>
+            <span>{{trans('admin.coupons')}}</span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'manage-coupon')? 'active':'' }}"><a href="{{ route('manage-coupon') }}"><i class="ti-more"></i>Manage Coupon</a></li>
+            <li class="{{ ($route == 'manage-coupon')? 'active':'' }}"><a href="{{ route('manage-coupon') }}"><i class="ti-more"></i>{{trans('admin.manage-coupons')}}</a></li>
 
              
              
@@ -157,17 +157,17 @@
          <li class="treeview {{ ($prefix == '/shipping')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Shipping Area</span>
+            <span>{{trans('admin.shipping-area')}}</span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-        <li class="{{ ($route == 'manage-division')? 'active':'' }}"><a href="{{ route('manage-division') }}"><i class="ti-more"></i>Ship Division</a></li>
+        <li class="{{ ($route == 'manage-division')? 'active':'' }}"><a href="{{ route('manage-division') }}"><i class="ti-more"></i>{{trans('admin.shipping-division')}}</a></li>
 
-         <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{ route('manage-district') }}"><i class="ti-more"></i>Ship District</a></li>
+         <li class="{{ ($route == 'manage-district')? 'active':'' }}"><a href="{{ route('manage-district') }}"><i class="ti-more"></i>{{trans('admin.shipping-district')}}</a></li>
 
-         <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{ route('manage-state') }}"><i class="ti-more"></i>Ship State</a></li>
+         <li class="{{ ($route == 'manage-state')? 'active':'' }}"><a href="{{ route('manage-state') }}"><i class="ti-more"></i>{{trans('admin.shipping-state')}}</a></li>
 
              
              
@@ -182,17 +182,17 @@
         <li class="treeview {{ ($prefix == '/blog')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Manage Blog</span>
+            <span>{{trans('admin.manage-blog')}}</span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-        <li class="{{ ($route == 'blog.category')? 'active':'' }}"><a href="{{ route('blog.category') }}"><i class="ti-more"></i>Blog Category</a></li>
+        <li class="{{ ($route == 'blog.category')? 'active':'' }}"><a href="{{ route('blog.category') }}"><i class="ti-more"></i>{{trans('admin.blog-category')}}</a></li>
 
-        <li class="{{ ($route == 'list.post')? 'active':'' }}"><a href="{{ route('list.post') }}"><i class="ti-more"></i>List Blog Post</a></li>
+        <li class="{{ ($route == 'list.post')? 'active':'' }}"><a href="{{ route('list.post') }}"><i class="ti-more"></i>{{trans('admin.list-blog-post')}}</a></li>
 
-         <li class="{{ ($route == 'add.post')? 'active':'' }}"><a href="{{ route('add.post') }}"><i class="ti-more"></i>Add Blog Post</a></li>
+         <li class="{{ ($route == 'add.post')? 'active':'' }}"><a href="{{ route('add.post') }}"><i class="ti-more"></i>{{trans('admin.add-post')}}</a></li>
   
           </ul>
         </li>       
@@ -205,15 +205,15 @@
 <li class="treeview {{ ($prefix == '/setting')?'active':'' }}  ">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Manage Setting</span>
+            <span>{{trans('admin.manage-settings')}}</span>
             <span class="pull-left-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-        <li class="{{ ($route == 'site.setting')? 'active':'' }}"><a href="{{ route('site.setting') }}"><i class="ti-more"></i>Site Setting</a></li>
+        <li class="{{ ($route == 'site.setting')? 'active':'' }}"><a href="{{ route('site.setting') }}"><i class="ti-more"></i>{{trans('admin.site-settings')}}</a></li>
 
-        <li class="{{ ($route == 'seo.setting')? 'active':'' }}"><a href="{{ route('seo.setting') }}"><i class="ti-more"></i>Seo Setting</a></li>
+        <li class="{{ ($route == 'seo.setting')? 'active':'' }}"><a href="{{ route('seo.setting') }}"><i class="ti-more"></i>{{trans('admin.seo-settings')}}</a></li>
  
   
           </ul>

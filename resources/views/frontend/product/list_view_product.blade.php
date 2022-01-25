@@ -13,7 +13,7 @@
         <div class="col col-sm-8 col-lg-8">
           <div class="product-info">
             <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-            	@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+            	@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
             <div class="rating rateit-small"></div>
 
 
@@ -25,16 +25,16 @@
             
             <!-- /.product-price -->
             <div class="description m-t-10">
-            	@if(session()->get('language') == 'hindi') {{ $product->short_descp_hin }} @else {{ $product->short_descp_en }} @endif</div>
+            	@if(session()->get('lang') == 'hi') {{ $product->short_descp_hin }} @else {{ $product->short_descp_en }} @endif</div>
             <div class="cart clearfix animate-effect">
               <div class="action">
                 <ul class="list-unstyled">
                   <li class="add-cart-button btn-group">
                     <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
             
-                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                    <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
                   </li>
-                  <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+                  <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
                 </ul>
               </div>
               <!-- /.action --> 
@@ -57,7 +57,7 @@
                       <!-- /.product-list-row -->
                       <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif

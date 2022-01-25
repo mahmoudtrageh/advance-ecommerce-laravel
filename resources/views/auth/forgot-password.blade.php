@@ -1,12 +1,14 @@
 @extends('frontend.main_master')
 @section('content')
-
+@section('title')
+{{trans('site.forget-password')}}
+@endsection
 <div class="breadcrumb">
     <div class="container">
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
-                <li><a href="home.html">Home</a></li>
-                <li class='active'>Forget Password</li>
+                <li><a href="home.html">{{trans('site.home')}}</a></li>
+                <li class='active'>{{trans('site.forget-password')}}</li>
             </ul>
         </div><!-- /.breadcrumb-inner -->
     </div><!-- /.container -->
@@ -18,8 +20,7 @@
             <div class="row">
                 <!-- Sign-in -->            
 <div class="col-md-6 col-sm-6 sign-in">
-    <h4 class="">Forget Password</h4>
-    <p class="">Forgot your password? No Problem</p>
+    <h4 class="">{{trans('site.reset-password')}}</h4>
      
    
 
@@ -28,12 +29,12 @@
 
 
         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
+            <label class="info-title" for="exampleInputEmail1">{{trans('site.email')}} <span>*</span></label>
             <input type="email" id="email" name="email" class="form-control unicase-form-control text-input">
         </div>
         
         
-        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Email Password Reset Link</button>
+        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{trans('site.reset-password')}}</button>
     </form>   
 
 

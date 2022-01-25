@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-Subcategory Product 
+{{trans('site.subcategory-page')}}
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,14 +12,14 @@ Subcategory Product
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
-        <li><a href="#">Home</a></li>
+        <li><a href="#">{{trans('site.home')}}</a></li>
 
          @foreach($breadsubcat as $item)
-        <li class='active'>{{ $item->category->category_name_en }}</li>
+        <li class='active'>@if(session()->get('lang') == 'hi') {{ $item->category->category_name_hin }} @else {{ $item->category->category_name_en }} @endif</li>
         @endforeach
 
         @foreach($breadsubcat as $item)
-        <li class='active'>{{ $item->subcategory_name_en }}</li>
+        <li class='active'>@if(session()->get('lang') == 'hi') {{ $item->subcategory_name_hin }} @else {{ $item->subcategory_name_en }}  @endif</li>
         @endforeach
       </ul>
     </div>
@@ -44,9 +44,9 @@ Subcategory Product
           <div class="sidebar-filter"> 
             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
             <div class="sidebar-widget wow fadeInUp">
-              <h3 class="section-title">shop by</h3>
+              <h3 class="section-title">{{trans('site.shop-by')}}</h3>
               <div class="widget-header">
-                <h4 class="widget-title">Category</h4>
+                <h4 class="widget-title">{{trans('site.category')}}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <div class="accordion">
@@ -55,7 +55,7 @@ Subcategory Product
  @foreach($categories as $category)
 	<div class="accordion-group">
 	<div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed"> 
-		@if(session()->get('language') == 'hindi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif </a> </div>
+		@if(session()->get('lang') == 'hi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif </a> </div>
 	<!-- /.accordion-heading -->
 	<div class="accordion-body collapse" id="collapse{{ $category->id }}" style="height: 0px;">
 	  <div class="accordion-inner">
@@ -67,7 +67,7 @@ Subcategory Product
    @foreach($subcategories as $subcategory)
 	    <ul>
 	      <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en ) }}">
-	      	@if(session()->get('language') == 'hindi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif</a></li>
+	      	@if(session()->get('lang') == 'hi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif</a></li>
 	      
 	    </ul>
 	@endforeach 
@@ -102,7 +102,7 @@ Subcategory Product
             <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
+                <h4 class="widget-title">{{trans('site.price-filter')}}</h4>
               </div>
               <form action="{{ route('subcat.shop.filter', ['subsubcat_id' => $subcat_id, 'slug' => $slug]) }}" method="post">
                 @csrf
@@ -127,7 +127,7 @@ Subcategory Product
                             <input name="price" type="text" class="price-slider" value="" >
                           </div>
                           <!-- /.price-range-holder --> 
-                          <input type="submit" class="lnk btn btn-primary" value="shop now"> </div>
+                          <input type="submit" class="lnk btn btn-primary" value="{{trans('site.shop-now')}}"> </div>
                         <!-- /.sidebar-widget-body --> 
                       </div>
                     </form>
@@ -214,25 +214,17 @@ Subcategory Product
         <div id="category" class="category-carousel hidden-xs">
           <div class="item">
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
-            <div class="container-fluid">
-              <div class="caption vertical-top text-left">
-                <div class="big-text"> Big Sale </div>
-                <div class="excerpt hidden-sm hidden-md"> Save up to 49% off </div>
-                <div class="excerpt-normal hidden-sm hidden-md"> Lorem ipsum dolor sit amet, consectetur adipiscing elit </div>
-              </div>
-              <!-- /.caption --> 
-            </div>
             <!-- /.container-fluid --> 
           </div>
         </div>
       
        @foreach($breadsubcat as $item)
         
- <span class="badge badge-danger" style="background: #808080">{{ $item->category->category_name_en }} </span>
+ <span class="badge badge-danger" style="background: #808080">@if(session()->get('lang') == 'hi'){{ $item->category->category_name_hin }} @else {{ $item->category->category_name_en }} @endif </span>
         @endforeach
 /
         @foreach($breadsubcat as $item)
- <span class="badge badge-danger" style="background: #FF0000">{{ $item->subcategory_name_en }} </span>
+ <span class="badge badge-danger" style="background: #FF0000">@if(session()->get('lang') == 'hi'){{ $item->subcategory_name_hin }} @else {{ $item->subcategory_name_en }} @endif</span>
         
         @endforeach  
      
@@ -241,8 +233,8 @@ Subcategory Product
             <div class="col col-sm-6 col-md-2">
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
-                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>{{trans('site.grid')}}</a> </li>
+                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>{{trans('site.list')}}</a></li>
                 </ul>
               </div>
               <!-- /.filter-tabs --> 

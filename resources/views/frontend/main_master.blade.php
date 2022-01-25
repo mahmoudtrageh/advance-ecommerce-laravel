@@ -141,8 +141,6 @@ $seo = App\Models\Seo::find(1);
 }
 .breadcrumb ul li:after {
     content: "\\";
-    margin-right: 9px;
-    margin-left: -4px;
 }
 .main-header .top-search-holder .search-area .control-group .search-button{
     left: 0;
@@ -153,6 +151,31 @@ $seo = App\Models\Seo::find(1);
 }
 .top-bar .cnt-account {
   float: right;
+}
+.breadcrumb ul li:after {
+    margin-left: 0px;
+    margin-right: 5px;
+}
+.inner-right-vs{
+    margin-left: 10px;
+}
+.filters-container .nav-tabs.nav-tab-box li a .icon{
+    margin-left: 5px;
+    margin-right: 0;
+}
+.sidebar .sidebar-module-container .sidebar-widget .sidebar-widget-body .accordion .accordion-group .accordion-body .accordion-inner ul li a:before{
+    content: "\f104";
+    float:right;
+    margin: 5px 5px 0px 5px;
+}
+.sidebar .sidebar-module-container .sidebar-widget .sidebar-widget-body .accordion .accordion-group .accordion-heading .accordion-toggle:after{
+    float: left;
+}
+.sidebar .sidebar-module-container .sidebar-widget .sidebar-widget-body .accordion .accordion-group .accordion-body .accordion-inner ul li a:hover:before{    margin: 5px 5px 0px 5px;
+    margin: 5px 5px 0px 8px;
+}
+.heading-title{
+    text-align: right !important;
 }
 </style>
 @endif
@@ -249,13 +272,13 @@ $seo = App\Models\Seo::find(1);
         <div class="col-md-4">
 
      <ul class="list-group">
-  <li class="list-group-item">Product Price: <strong class="text-danger">$<span id="pprice"></span></strong>
+  <li class="list-group-item">{{trans('site.product-price')}}: <strong class="text-danger">$<span id="pprice"></span></strong>
 <del id="oldprice">$</del>
    </li>
-  <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
-  <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
-  <li class="list-group-item">Brand: <strong id="pbrand"></strong></li>
-  <li class="list-group-item">Stock: <span class="badge badge-pill badge-success" id="aviable" style="background: green; color: white;"></span> 
+  <li class="list-group-item">{{trans('site.product-code')}}: <strong id="pcode"></strong></li>
+  <li class="list-group-item">{{trans('site.category')}}: <strong id="pcategory"></strong></li>
+  <li class="list-group-item">{{trans('site.brand')}}: <strong id="pbrand"></strong></li>
+  <li class="list-group-item">{{trans('site.stock')}}: <span class="badge badge-pill badge-success" id="aviable" style="background: green; color: white;"></span> 
 <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: white;"></span> 
 
   </li>
@@ -267,7 +290,7 @@ $seo = App\Models\Seo::find(1);
         <div class="col-md-4">
 
             <div class="form-group">
-    <label for="color">Choose Color</label>
+    <label for="color">{{trans('site.choose-color')}}</label>
     <select class="form-control" id="color" name="color">
       
       
@@ -276,7 +299,7 @@ $seo = App\Models\Seo::find(1);
 
 
     <div class="form-group" id="sizeArea">
-    <label for="size">Choose Size</label>
+    <label for="size">{{trans('site.choose-size')}}</label>
     <select class="form-control" id="size" name="size">
       <option>1</option>
        
@@ -284,12 +307,12 @@ $seo = App\Models\Seo::find(1);
   </div>  <!-- // end form group -->
 
        <div class="form-group">
-    <label for="qty">Quantity</label>
+    <label for="qty">{{trans('site.quantity')}}</label>
     <input type="number" class="form-control" id="qty" value="1" min="1" >
   </div> <!-- // end form group -->
 
 <input type="hidden" id="product_id">
-<button type="submit" class="btn btn-primary mb-2" onclick="addToCart()" >Add to Cart</button>
+<button type="submit" class="btn btn-primary mb-2" onclick="addToCart()" >{{trans('site.add-to-cart')}}</button>
 
             
         </div><!-- // end col md -->
@@ -306,6 +329,143 @@ $seo = App\Models\Seo::find(1);
 </div>
 <!-- End Add to Cart Product Modal -->
 
+@if(session()->get('lang') == 'hi')
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+        }
+    })
+
+// Start Product View with Modal 
+
+function productView(id){
+    // alert(id)
+    $.ajax({
+        type: 'GET',
+        url: '/product/view/modal/'+id,
+        dataType:'json',
+        success:function(data){
+            // console.log(data)
+            $('#pname').text(data.product.product_name_hin);
+            $('#price').text(data.product.selling_price);
+            $('#pcode').text(data.product.product_code);
+            $('#pcategory').text(data.product.category.category_name_hin);
+            $('#pbrand').text(data.product.brand.brand_name_hin);
+            $('#pimage').attr('src','/'+data.product.product_thambnail);
+
+            $('#product_id').val(id);
+            $('#qty').val(1);
+
+            // Product Price 
+            if (data.product.discount_price == null) {
+                $('#pprice').text('');
+                $('#oldprice').text('');
+                $('#pprice').text(data.product.selling_price);
+
+
+            }else{
+                $('#pprice').text(data.product.discount_price);
+                $('#oldprice').text(data.product.selling_price);
+
+            } // end prodcut price 
+
+            // Start Stock opiton
+
+            if (data.product.product_qty > 0) {
+                $('#aviable').text('');
+                $('#stockout').text('');
+                $('#aviable').text('aviable');
+
+            }else{
+                $('#aviable').text('');
+                $('#stockout').text('');
+                $('#stockout').text('stockout');
+            } // end Stock Option 
+
+            // Color
+    $('select[name="color"]').empty();        
+    $.each(data.color,function(key,value){
+        $('select[name="color"]').append('<option value=" '+value+' ">'+value+' </option>')
+    }) // end color
+
+     // Size
+    $('select[name="size"]').empty();        
+    $.each(data.size,function(key,value){
+        $('select[name="size"]').append('<option value=" '+value+' ">'+value+' </option>')
+        if (data.size == "") {
+            $('#sizeArea').hide();
+        }else{
+            $('#sizeArea').show();
+        }
+
+    }) // end size
+ 
+
+        }
+
+    })
+ 
+
+}
+// Eend Product View with Modal 
+
+
+ // Start Add To Cart Product 
+
+    function addToCart(){
+        var product_name = $('#pname').text();
+        var id = $('#product_id').val();
+        var color = $('#color option:selected').text();
+        var size = $('#size option:selected').text();
+        var quantity = $('#qty').val();
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data:{
+                color:color, size:size, quantity:quantity, product_name:product_name
+            },
+            url: "/cart/data/store/"+id,
+            success:function(data){
+
+                miniCart()
+                $('#closeModel').click();
+                // console.log(data)
+
+                // Start Message 
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      icon: 'success',
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        title: data.error
+                    })
+
+                }
+
+                // End Message 
+            }
+        })
+
+    }
+  
+// End Add To Cart Product 
+
+</script>
+
+@else 
 
 <script type="text/javascript">
     $.ajaxSetup({
@@ -441,6 +601,8 @@ function productView(id){
 
 </script>
 
+@endif
+
 <script type="text/javascript">
      function miniCart(){
         $.ajax({
@@ -573,6 +735,7 @@ function addToWishList(product_id){
 
 <!-- /// Load Wishlist Data  -->
 
+@if(session()->get('lang') == 'hi')
 
 <script type="text/javascript">
      function wishlist(){
@@ -587,7 +750,7 @@ function addToWishList(product_id){
                     rows += `<tr>
                     <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="imga"></td>
                     <td class="col-md-7">
-                        <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
+                        <div class="product-name"><a href="#">${value.product.product_name_hin}</a></div>
                          
                         <div class="price">
                         ${value.product.discount_price == null
@@ -600,7 +763,7 @@ function addToWishList(product_id){
                         </div>
                     </td>
         <td class="col-md-2">
-            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Add to Cart </button>
+            <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> {{trans('site.add-to-cart')}} </button>
         </td>
         <td class="col-md-1 close-btn">
             <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
@@ -664,6 +827,100 @@ function addToWishList(product_id){
 
 <!-- /// End Load Wisch list Data  -->
 
+@else 
+
+<script type="text/javascript">
+    function wishlist(){
+       $.ajax({
+           type: 'GET',
+           url: '/user/get-wishlist-product',
+           dataType:'json',
+           success:function(response){
+
+               var rows = ""
+               $.each(response, function(key,value){
+                   rows += `<tr>
+                   <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="imga"></td>
+                   <td class="col-md-7">
+                       <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
+                        
+                       <div class="price">
+                       ${value.product.discount_price == null
+                           ? `${value.product.selling_price}`
+                           :
+                           `${value.product.discount_price} <span>${value.product.selling_price}</span>`
+                       }
+
+                           
+                       </div>
+                   </td>
+       <td class="col-md-2">
+           <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> {{trans('site.add-to-cart')}} </button>
+       </td>
+       <td class="col-md-1 close-btn">
+           <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
+       </td>
+               </tr>`
+       });
+               
+               $('#wishlist').html(rows);
+           }
+       })
+
+    }
+wishlist();
+
+
+
+///  Wishlist remove Start 
+   function wishlistRemove(id){
+       $.ajax({
+           type: 'GET',
+           url: '/user/wishlist-remove/'+id,
+           dataType:'json',
+           success:function(data){
+           wishlist();
+
+            // Start Message 
+               const Toast = Swal.mixin({
+                     toast: true,
+                     position: 'top-end',
+                     
+                     showConfirmButton: false,
+                     timer: 3000
+                   })
+               if ($.isEmptyObject(data.error)) {
+                   Toast.fire({
+                       type: 'success',
+                       icon: 'success',
+                       title: data.success
+                   })
+
+               }else{
+                   Toast.fire({
+                       type: 'error',
+                       icon: 'error',
+                       title: data.error
+                   })
+
+               }
+
+               // End Message 
+
+           }
+       });
+
+   }
+
+// End Wishlist remove   
+
+
+</script>  
+
+<!-- /// End Load Wisch list Data  -->
+
+
+@endif
 
 <!-- /// Load My Cart /// -->
 
@@ -985,13 +1242,6 @@ function addToWishList(product_id){
 
 <!--  //////////////// =========== End Coupon Remove================= ////  -->
  
-@if(session()->get('lang') == 'hi')
-
-<script>
-
-</script>
-
-@endif
 
 
 </body>

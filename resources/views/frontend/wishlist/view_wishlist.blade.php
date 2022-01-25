@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
- Wish List Page 
+{{trans('site.whishlist')}} 
 @endsection
 
 
@@ -10,8 +10,8 @@
 	<div class="container">
 		<div class="breadcrumb-inner">
 			<ul class="list-inline list-unstyled">
-				<li><a href="home.html">Home</a></li>
-				<li class='active'>Wishlist</li>
+				<li><a href="home.html">{{trans('site.home')}}</a></li>
+				<li class='active'>{{trans('site.whishlist')}}</li>
 			</ul>
 		</div><!-- /.breadcrumb-inner -->
 	</div><!-- /.container -->
@@ -26,7 +26,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th colspan="4" class="heading-title">My Wishlist</th>
+					<th colspan="4" class="heading-title">{{trans('site.whishlist')}}</th>
 				</tr>
 			</thead>
 			<tbody id="wishlist">

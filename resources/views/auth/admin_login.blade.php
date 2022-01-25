@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
 
-    <title>Easy Ecommerce Admin - Log in </title>
+    <title>{{trans('site.login')}} </title>
   
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
@@ -17,9 +17,51 @@
 	<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">	
 
+	<style>
+		.admin-login-page .nav {
+			margin-left: 20px;
+		}
+	</style>
+	@if(session()->get('lang') == 'hi')
+	<style>
+		.admin-login .input-group input{
+			text-align: right;
+		}
+		.admin-login .checkbox{
+			text-align: right;
+		}
+		.admin-login-page .nav {
+			text-align: right;
+			margin-right: 20px;
+		}
+		.admin-login-page .dropdown-menu{
+			right: 0px;
+    		left: auto !important;
+		}
+	</style>
+	@endif
 </head>
 <body class="hold-transition theme-primary bg-gradient-primary">
 	
+	<div class="navbar-custom-menu r-side admin-login-page">
+        <ul class="nav" style="display: block;">
+	<!-- User Account-->
+	<li class="dropdown user user-menu">	
+		<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
+			<i class="fa fa-globe" style="font-size: 30px;margin-top: 5px"></i>
+		</a>
+		<ul class="dropdown-menu animated flipInX" style="padding:10px;">
+			@if(session()->get('lang') == 'hi')       
+			<li><a href="{{route('site.change.lang',['lang'=>'en'])}}">الإنجليزية</a></li>
+			@else
+			<li><a href="{{route('site.change.lang',['lang'=>'hi'])}}">Arabic</a></li>
+			 @endif      
+		</ul>
+	  </li>	
+
+		</ul>
+	</div>
+
 	<div class="container h-p100">
 		<div class="row align-items-center justify-content-md-center h-p100">	
 			
@@ -27,64 +69,43 @@
 				<div class="row justify-content-center no-gutters">
 					<div class="col-lg-4 col-md-5 col-12">
 	<div class="content-top-agile p-10">
-		<h2 class="text-white">Get started with Us</h2>
-		<p class="text-white-50">Sign in to start your session</p>							
+		<p class="text-white-50">{{trans('site.login-to-admin-panel')}}</p>							
 	</div>
 	<div class="p-30 rounded30 box-shadowed b-2 b-dashed">
+ 
 
- <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
+ <form class="admin-login" method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
             @csrf 
 
 			<div class="form-group">
 				<div class="input-group mb-3">
-					<div class="input-group-prepend">
+ 					<input type="email" id="email" name="email" class="form-control pl-15 bg-transparent text-white plc-white" placeholder="{{trans('site.email')}}">
+					 <div class="input-group-prepend">
 						<span class="input-group-text bg-transparent text-white"><i class="ti-user"></i></span>
 					</div>
- <input type="email" id="email" name="email" class="form-control pl-15 bg-transparent text-white plc-white" placeholder="Email">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="input-group mb-3">
-					<div class="input-group-prepend">
+ 					<input type="password" id="password" name="password" class="form-control pl-15 bg-transparent text-white plc-white" placeholder="{{trans('site.password')}}">
+					 <div class="input-group-prepend">
 						<span class="input-group-text  bg-transparent text-white"><i class="ti-lock"></i></span>
 					</div>
- <input type="password" id="password" name="password" class="form-control pl-15 bg-transparent text-white plc-white" placeholder="Password">
 				</div>
 			</div>
-			  <div class="row">
-				<div class="col-6">
 				  <div class="checkbox text-white">
 					<input type="checkbox" id="basic_checkbox_1" >
-					<label for="basic_checkbox_1">Remember Me</label>
+					<label for="basic_checkbox_1">{{trans('site.remember-me')}}</label>
 				  </div>
-				</div>
-				<!-- /.col -->
-				<div class="col-6">
-				 <div class="fog-pwd text-right">
-		 <a href="{{ route('password.request') }}" class="text-white hover-info"><i class="ion ion-locked"></i> Forgot pwd?</a><br>
-				  </div>
-				</div>
-				<!-- /.col -->
+				  <div class="row">
+
 				<div class="col-12 text-center">
-				  <button type="submit" class="btn btn-info btn-rounded mt-10">SIGN IN</button>
+				  <button type="submit" class="btn btn-info btn-rounded mt-10">{{trans('site.login')}}</button>
 				</div>
 				<!-- /.col -->
 			  </div>
 		</form>														
-
-		<div class="text-center text-white">
-		  <p class="mt-20">- Sign With -</p>
-		  <p class="gap-items-2 mb-20">
-			  <a class="btn btn-social-icon btn-round btn-outline btn-white" href="#"><i class="fa fa-facebook"></i></a>
-			  <a class="btn btn-social-icon btn-round btn-outline btn-white" href="#"><i class="fa fa-twitter"></i></a>
-			  <a class="btn btn-social-icon btn-round btn-outline btn-white" href="#"><i class="fa fa-google-plus"></i></a>
-			  <a class="btn btn-social-icon btn-round btn-outline btn-white" href="#"><i class="fa fa-instagram"></i></a>
-			</p>	
-		</div>
 		
-		<div class="text-center">
-			<p class="mt-15 mb-0 text-white">Don't have an account? <a href="auth_register.html" class="text-info ml-5">Sign Up</a></p>
-		</div>
 						</div>
 					</div>
 				</div>

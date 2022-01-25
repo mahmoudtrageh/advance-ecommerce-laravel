@@ -1,7 +1,7 @@
 @extends('frontend.main_master')
 @section('content')
 @section('title')
-Shop Page
+{{trans('site.shop')}}
 @endsection
 
 
@@ -12,7 +12,7 @@ Shop Page
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
-        <li><a href="#">Shop Page</a></li>
+        <li><a href="#">{{trans('site.shop')}}</a></li>
          
       </ul>
     </div>
@@ -43,13 +43,13 @@ Shop Page
           <div class="sidebar-filter"> 
             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
             <div class="sidebar-widget wow fadeInUp">
-              <h3 class="section-title">shop by</h3>
+              <h3 class="section-title">{{trans('site.shop-by')}}</h3>
 
 
 
 
               <div class="widget-header">
-                <h4 class="widget-title">Category</h4>
+                <h4 class="widget-title">{{trans('site.category')}}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <div class="accordion">
@@ -69,7 +69,7 @@ Shop Page
  <label class="form-check-label">
   <input type="checkbox" class="form-check-input" name="category[]" value="{{ $category->category_slug_en }}" @if(!empty($filterCat) && in_array($category->category_slug_en,$filterCat)) checked @endif  onchange="this.form.submit()">
 
-  @if(session()->get('language') == 'hindi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif 
+  @if(session()->get('lang') == 'hi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif 
    
  </label>
 
@@ -107,7 +107,7 @@ Shop Page
 
 
  <div class="widget-header">
-                <h4 class="widget-title">Brand Filter</h4>
+                <h4 class="widget-title">{{trans('site.brand-filter')}}</h4>
               </div>
               <div class="sidebar-widget-body">
                 <div class="accordion">
@@ -127,7 +127,7 @@ Shop Page
  <label class="form-check-label">
   <input type="checkbox" class="form-check-input" name="brand[]" value="{{ $brand->brand_slug_en }}" @if(!empty($filterBrand) && in_array($brand->brand_slug_en,$filterBrand)) checked @endif onchange="this.form.submit()">
 
-  @if(session()->get('language') == 'hindi') {{ $brand->brand_name_hin }} @else {{ $brand->brand_name_en }} @endif 
+  @if(session()->get('lang') == 'hi') {{ $brand->brand_name_hin }} @else {{ $brand->brand_name_en }} @endif 
    
  </label>
 
@@ -166,7 +166,7 @@ Shop Page
             <!-- ============================================== PRICE SILDER============================================== -->
             <div class="sidebar-widget wow fadeInUp">
               <div class="widget-header">
-                <h4 class="widget-title">Price Slider</h4>
+                <h4 class="widget-title">{{trans('site.price-filter')}}</h4>
               </div>
               
           
@@ -202,7 +202,7 @@ Shop Page
                   <input name="price" type="text" class="price-slider" value="" >
                 </div>
                 <!-- /.price-range-holder --> 
-                <input type="submit" class="lnk btn btn-primary" value="shop now"> </div>
+                <input type="submit" class="lnk btn btn-primary" value="{{trans('site.shop-now')}}"> </div>
               <!-- /.sidebar-widget-body --> 
             </div>
           </form>
@@ -288,14 +288,7 @@ Shop Page
         <div id="category" class="category-carousel hidden-xs">
           <div class="item">
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
-            <div class="container-fluid">
-              <div class="caption vertical-top text-left">
-                <div class="big-text"> Big Sale </div>
-                <div class="excerpt hidden-sm hidden-md"> Save up to 49% off </div>
-                <div class="excerpt-normal hidden-sm hidden-md"> Lorem ipsum dolor sit amet, consectetur adipiscing elit </div>
-              </div>
-              <!-- /.caption --> 
-            </div>
+            
             <!-- /.container-fluid --> 
           </div>
         </div>
@@ -309,8 +302,8 @@ Shop Page
             <div class="col col-sm-6 col-md-2">
               <div class="filter-tabs">
                 <ul id="filter-tabs" class="nav nav-tabs nav-tab-box nav-tab-fa-icon">
-                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>Grid</a> </li>
-                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>List</a></li>
+                  <li class="active"> <a data-toggle="tab" href="#grid-container"><i class="icon fa fa-th-large"></i>{{trans('site.grid')}}</a> </li>
+                  <li><a data-toggle="tab" href="#list-container"><i class="icon fa fa-th-list"></i>{{trans('site.list')}}</a></li>
                 </ul>
               </div>
               <!-- /.filter-tabs --> 
@@ -395,7 +388,7 @@ Shop Page
           
           <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -407,7 +400,7 @@ Shop Page
         
         <div class="product-info text-left">
           <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-          	@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+          	@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
           <div class="rating rateit-small"></div>
           <div class="description"></div>
 
@@ -431,11 +424,11 @@ Shop Page
           <div class="action">
             <ul class="list-unstyled">
               <li class="add-cart-button btn-group">
-                <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
+                <button class="btn btn-primary icon" type="button" title="{{trans('site.add-to-cart')}}" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"> <i class="fa fa-shopping-cart"></i> </button>
         
-        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+        <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
               </li>
-              <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
+              <button class="btn btn-primary icon" type="button" title="{{trans('site.whishlist')}}" id="{{ $product->id }}" onclick="addToWishList(this.id)"> <i class="fa fa-heart"></i> </button>
             </ul>
           </div>
           <!-- /.action --> 
@@ -497,7 +490,7 @@ Shop Page
         <div class="col col-sm-8 col-lg-8">
           <div class="product-info">
             <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-            	@if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
+            	@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
             <div class="rating rateit-small"></div>
 
 
@@ -509,16 +502,15 @@ Shop Page
             
             <!-- /.product-price -->
             <div class="description m-t-10">
-            	@if(session()->get('language') == 'hindi') {{ $product->short_descp_hin }} @else {{ $product->short_descp_en }} @endif</div>
+            	@if(session()->get('lang') == 'hi') {{ $product->short_descp_hin }} @else {{ $product->short_descp_en }} @endif</div>
             <div class="cart clearfix animate-effect">
               <div class="action">
                 <ul class="list-unstyled">
                   <li class="add-cart-button btn-group">
                     <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                    <button class="btn btn-primary cart-btn" type="button">{{trans('site.add-to-cart')}}</button>
                   </li>
-                  <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                  <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                  <li class="lnk wishlist"> <a class="add-to-cart" id="{{ $product->id }}" onclick="addToWishList(this.id)" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
                 </ul>
               </div>
               <!-- /.action --> 
@@ -541,7 +533,7 @@ Shop Page
                       <!-- /.product-list-row -->
                       <div>
             @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
+            <div class="tag new"><span>{{trans('site.new')}}</span></div>
             @else
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
@@ -589,47 +581,7 @@ Shop Page
       <!-- /.col --> 
     </div>
     <!-- /.row --> 
-    <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-    <div id="brands-carousel" class="logo-slider wow fadeInUp">
-      <div class="logo-slider-inner">
-        <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-          <div class="item m-t-15"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item m-t-10"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item-->
-          
-          <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt=""> </a> </div>
-          <!--/.item--> 
-        </div>
-        <!-- /.owl-carousel #logo-slider --> 
-      </div>
-      <!-- /.logo-slider-inner --> 
-      
-    </div>
-    <!-- /.logo-slider --> 
-    <!-- ============================================== BRANDS CAROUSEL : END ============================================== --> 
+
 
 
  </form>
