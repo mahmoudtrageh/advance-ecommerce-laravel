@@ -35,7 +35,7 @@ public function DivisionStore(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'Division Inserted Successfully',
+			'message' => trans('admin.province-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -63,7 +63,7 @@ public function DivisionStore(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'Division Updated Successfully',
+			'message' => trans('admin.province-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -78,7 +78,7 @@ public function DivisionStore(Request $request){
     	ShipDivision::findOrFail($id)->delete();
 
     	$notification = array(
-			'message' => 'Division Deleted Successfully',
+			'message' => trans('admin.province-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -115,7 +115,7 @@ public function DistrictStore(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'District Inserted Successfully',
+			'message' => trans('admin.city-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -146,7 +146,7 @@ public function DistrictEdit($id){
     	]);
 
 	    $notification = array(
-			'message' => 'District Updated Successfully',
+			'message' =>  trans('admin.city-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -164,7 +164,7 @@ public function DistrictEdit($id){
     	ShipDistrict::findOrFail($id)->delete();
 
     	$notification = array(
-			'message' => 'District Deleted Successfully',
+			'message' =>  trans('admin.city-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -208,7 +208,7 @@ public function DistrictEdit($id){
     	]);
 
 	    $notification = array(
-			'message' => 'State Inserted Successfully',
+			'message' => trans('admin.street-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -239,7 +239,7 @@ public function StateEdit($id){
     	]);
 
 	    $notification = array(
-			'message' => 'State Updated Successfully',
+			'message' => trans('admin.street-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -254,7 +254,7 @@ public function StateDelete($id){
     	ShipState::findOrFail($id)->delete();
 
     	$notification = array(
-			'message' => 'State Deleted Successfully',
+			'message' => trans('admin.street-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 

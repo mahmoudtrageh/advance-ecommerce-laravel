@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Pending All Reviews </h3>
+				  <h3 class="box-title">{{trans('admin.pending-reviews-list')}} </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,12 +26,12 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Summary  </th>
-								<th>Comment </th>
-								<th>User </th>
-								<th>Product  </th>
-								<th>Status </th>
-								<th>Action</th>
+								<th>{{trans('site.summary')}}  </th>
+								<th>{{trans('admin.comment')}} </th>
+								<th>{{trans('admin.user')}} </th>
+								<th>{{trans('admin.product')}}  </th>
+								<th>{{trans('admin.status')}} </th>
+								<th>{{trans('admin.process')}}</th>
 								 
 							</tr>
 						</thead>
@@ -45,15 +45,15 @@
 		<td> {{ $item->product->product_name_en }}  </td>
 		<td>
 		@if($item->status == 0)
-      <span class="badge badge-pill badge-primary">Pending </span>
+      <span class="badge badge-pill badge-primary">{{trans('admin.pending')}} </span>
        @elseif($item->status == 1)
-       <span class="badge badge-pill badge-success">Publish </span>
+       <span class="badge badge-pill badge-success">{{trans('admin.publish')}} </span>
 		@endif
 
 		  </td>
 
 		<td width="25%">
-  <a href="{{ route('review.approve',$item->id) }}" class="btn btn-danger">Approve </a>
+  <a href="{{ route('review.approve',$item->id) }}" class="btn btn-danger">{{trans('admin.approve')}} </a>
 		</td>
 							 
 	 </tr>

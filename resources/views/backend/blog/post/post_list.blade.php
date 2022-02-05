@@ -1,6 +1,19 @@
 @extends('admin.admin_master')
 @section('admin')
 
+@if(session()->get('lang') == 'hi')
+<style>
+	.add-post{
+		float:left;
+	}
+</style>
+@else 
+<style>
+	.add-post{
+		float:right;
+	}
+</style>
+@endif
 
   <!-- Content Wrapper. Contains page content -->
   
@@ -18,8 +31,8 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Blog Post List <span class="badge badge-pill badge-danger"> {{ count($blogpost) }} </span></h3>
-<a href="{{ route('add.post') }}" class="btn btn-success" style="float: right;">Add Post</a>				  
+				  <h3 class="box-title">{{trans('admin.blog-post-list')}} <span class="badge badge-pill badge-danger"> {{ count($blogpost) }} </span></h3>
+<a href="{{ route('add.post') }}" class="btn btn-success add-post">{{trans('admin.add-post')}}</a>				  
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -28,11 +41,11 @@
 						<thead>
 							<tr>
 								 
-								<th>Post Category  </th>
-								<th>Post Image </th>
-								<th>Post Title En </th>
-								<th>Post Title Hin </th>
-								<th>Action</th>
+								<th>{{trans('admin.post-category')}}  </th>
+								<th>{{trans('admin.post-image')}} </th>
+								<th>{{trans('admin.post-title-en')}}</th>
+								<th>{{trans('admin.post-title-ar')}} </th>
+								<th>{{trans('admin.process')}}</th>
 								 
 							</tr>
 						</thead>
@@ -45,8 +58,8 @@
 		<td>{{ $item->post_title_en }}</td>
 		 <td>{{ $item->post_title_hin }}</td>
 		<td width="20%">
- <a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
- <a href="{{ route('category.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+ <a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="{{trans('admin.edit')}}"><i class="fa fa-pencil"></i> </a>
+ <a href="{{ route('category.delete',$item->id) }}" class="btn btn-danger" title="{{trans('admin.delete')}}" id="delete">
  	<i class="fa fa-trash"></i></a>
 		</td>
 							 

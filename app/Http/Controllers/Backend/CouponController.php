@@ -36,7 +36,7 @@ class CouponController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Coupon Inserted Successfully',
+			'message' => trans('admin.coupon-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -63,7 +63,7 @@ class CouponController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Coupon Updated Successfully',
+			'message' => trans('admin.coupon-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -77,7 +77,7 @@ class CouponController extends Controller
 
     	Coupon::findOrFail($id)->delete();
     	$notification = array(
-			'message' => 'Coupon Deleted Successfully',
+			'message' => trans('admin.coupon-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 

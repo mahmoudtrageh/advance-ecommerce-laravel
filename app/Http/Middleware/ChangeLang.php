@@ -14,12 +14,19 @@ class ChangeLang
      * @param  \Closure  $next
      * @return mixed
      */
+
     public function handle($request, Closure $next)
     {
         if (session()->has('lang')){
             $lang = session('lang');
             app()->setLocale($lang);
         }
+        
+        if(!session()->has('lang'))
+        {
+            session()->put('lang', 'hi');
+        }
+
         return $next($request);
     }
 

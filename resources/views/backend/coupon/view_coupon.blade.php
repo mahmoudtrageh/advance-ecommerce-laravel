@@ -14,11 +14,11 @@
 			   
 		 
 
-			<div class="col-8">
+			<div class="col-12">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Coupon List <span class="badge badge-pill badge-danger"> {{ count($coupons) }} </span></h3>
+				  <h3 class="box-title">{{trans('admin.coupon-list')}} <span class="badge badge-pill badge-danger"> {{ count($coupons) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,11 +26,11 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Coupon Name </th>
-								<th>Coupon Discount</th>
-								<th>Validity </th>
-								<th>Status </th>
-								<th>Action</th>
+								<th>{{trans('admin.coupon-name')}} </th>
+								<th>{{trans('admin.coupon-discount')}}</th>
+								<th>{{trans('admin.coupon-validity')}} </th>
+								<th>{{trans('admin.status')}} </th>
+								<th>{{trans('admin.process')}}</th>
 								 
 							</tr>
 						</thead>
@@ -45,16 +45,16 @@
 
 		<td>
 		 	@if($item->coupon_validity >= Carbon\Carbon::now()->format('Y-m-d'))
-		 	<span class="badge badge-pill badge-success"> Valid </span>
+		 	<span class="badge badge-pill badge-success"> {{trans('admin.valid')}} </span>
 		 	@else
-           <span class="badge badge-pill badge-danger"> Invalid </span>
+           <span class="badge badge-pill badge-danger"> {{trans('admin.invalid')}} </span>
 		 	@endif
 
 		 </td>
 
 		<td width="25%">
- <a href="{{ route('coupon.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
- <a href="{{ route('coupon.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+ <a href="{{ route('coupon.edit',$item->id) }}" class="btn btn-info" title="{{trans('admin.edit')}}"><i class="fa fa-pencil"></i> </a>
+ <a href="{{ route('coupon.delete',$item->id) }}" class="btn btn-danger" title="{{trans('admin.delete')}}" id="delete">
  	<i class="fa fa-trash"></i></a>
 		</td>
 							 
@@ -77,11 +77,11 @@
 <!--   ------------ Add Category Page -------- -->
 
 
-          <div class="col-4">
+<div class="col-lg-6 col-md-12">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Coupon </h3>
+				  <h3 class="box-title">{{trans('admin.add-coupon')}} </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -93,7 +93,7 @@
 					   
 
 	 <div class="form-group">
-		<h5>Coupon Name  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.coupon-name')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="coupon_name" class="form-control" > 
 	 @error('coupon_name') 
@@ -104,7 +104,7 @@
 
 
 	<div class="form-group">
-		<h5>Coupon Discount(%) <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.coupon-discount')}} <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="coupon_discount" class="form-control" >
      @error('coupon_discount') 
@@ -115,7 +115,7 @@
 
 
 	<div class="form-group">
-		<h5>Coupon Validity Date  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.coupon-validity')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="date" name="coupon_validity" class="form-control" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
      @error('coupon_validity') 
@@ -126,7 +126,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{trans('admin.add')}}">					 
 						</div>
 					</form>
 

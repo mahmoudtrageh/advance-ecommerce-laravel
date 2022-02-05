@@ -1,7 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
 
-
   <!-- Content Wrapper. Contains page content -->
   
 	  <div class="container-full">
@@ -10,13 +9,13 @@
 
 <div class="content-header">
 			<div class="d-flex align-items-center">
-				<div class="mr-auto">
-					<h3 class="page-title">Order Details</h3>
+				<div class="">
+					<h3 class="page-title">{{trans('admin.order-details')}}</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Order Details</li>
+								<li class="breadcrumb-item" aria-current="page">{{trans('admin.order-details')}}</li>
 								 
 							</ol>
 						</nav>
@@ -35,48 +34,48 @@
 <div class="col-md-6 col-12">
 				<div class="box box-bordered border-primary">
 				  <div class="box-header with-border">
-					<h4 class="box-title"><strong>Shipping Details</strong> </h4>
+					<h4 class="box-title"><strong>{{trans('admin.shipping-details')}}</strong> </h4>
 				  </div>
 				  
 
 <table class="table">
             <tr>
-              <th> Shipping Name : </th>
+              <th> {{trans('admin.shipping-name')}} : </th>
                <th> {{ $order->name }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Phone : </th>
+              <th> {{trans('admin.shipping-phone')}} : </th>
                <th> {{ $order->phone }} </th>
             </tr>
 
              <tr>
-              <th> Shipping Email : </th>
+              <th> {{trans('admin.shipping-email')}} : </th>
                <th> {{ $order->email }} </th>
             </tr>
 
              <tr>
-              <th> Division : </th>
+              <th> {{trans('admin.province')}} : </th>
                <th> {{ $order->division->division_name }} </th>
             </tr>
 
              <tr>
-              <th> District : </th>
+              <th> {{trans('admin.city')}} : </th>
                <th> {{ $order->district->district_name }} </th>
             </tr>
 
              <tr>
-              <th> State : </th>
+              <th> {{trans('admin.street')}} : </th>
                <th>{{ $order->state->state_name }} </th>
             </tr>
 
             <tr>
-              <th> Post Code : </th>
+              <th> {{trans('admin.post-code')}} : </th>
                <th> {{ $order->post_code }} </th>
             </tr>
 
             <tr>
-              <th> Order Date : </th>
+              <th> {{trans('admin.order-date')}} : </th>
                <th> {{ $order->order_date }} </th>
             </tr>
              
@@ -91,23 +90,23 @@
 <div class="col-md-6 col-12">
 				<div class="box box-bordered border-primary">
 				  <div class="box-header with-border">
-					<h4 class="box-title"><strong>Order Details</strong><span class="text-danger"> Invoice : {{ $order->invoice_no }}</span></h4>
+					<h4 class="box-title"><strong>{{trans('admin.order-details')}}</strong><span class="text-danger"> {{trans('admin.invoice')}} : {{ $order->invoice_no }}</span></h4>
 				  </div>
 				   
 
 <table class="table">
             <tr>
-              <th>  Name : </th>
+              <th>  {{trans('admin.name')}} : </th>
                <th> {{ $order->user->name }} </th>
             </tr>
 
              <tr>
-              <th>  Phone : </th>
+              <th>  {{trans('admin.phone')}} : </th>
                <th> {{ $order->user->phone }} </th>
             </tr>
 
              <tr>
-              <th> Payment Type : </th>
+              <th> {{trans('admin.payment-method')}} : </th>
                <th> {{ $order->payment_method }} </th>
             </tr>
 
@@ -117,17 +116,17 @@
             </tr>
 
              <tr>
-              <th> Invoice  : </th>
+              <th> {{trans('admin.invoice')}}  : </th>
                <th class="text-danger"> {{ $order->invoice_no }} </th>
             </tr>
 
              <tr>
-              <th> Order Total : </th>
+              <th> {{trans('admin.order-total')}} : </th>
                <th>${{ $order->amount }} </th>
             </tr>
 
             <tr>
-              <th> Order : </th>
+              <th> {{trans('admin.status')}} : </th>
                <th>   
                 <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span> </th>
             </tr>
@@ -137,19 +136,19 @@
               <th>  </th>
                <th> 
                	@if($order->status == 'pending')
-               	<a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm">Confirm Order</a>
+               	<a href="{{ route('pending-confirm',$order->id) }}" class="btn btn-block btn-success" id="confirm">{{trans('admin.confirm-order')}}</a>
 
                	@elseif($order->status == 'confirm')
-               	<a href="{{ route('confirm.processing',$order->id) }}" class="btn btn-block btn-success" id="processing">Processing Order</a>
+               	<a href="{{ route('confirm.processing',$order->id) }}" class="btn btn-block btn-success" id="processing">{{trans('admin.processing-order')}}</a>
 
                	@elseif($order->status == 'processing')
-               	<a href="{{ route('processing.picked',$order->id) }}" class="btn btn-block btn-success" id="picked">Picked Order</a>
+               	<a href="{{ route('processing.picked',$order->id) }}" class="btn btn-block btn-success" id="picked">{{trans('admin.picked-order')}}</a>
 
                	@elseif($order->status == 'picked')
-               	<a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">Shipped Order</a>
+               	<a href="{{ route('picked.shipped',$order->id) }}" class="btn btn-block btn-success" id="shipped">{{trans('admin.shipped-order')}}</a>
 
                	@elseif($order->status == 'shipped')
-                <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">Delivered Order</a>
+                <a href="{{ route('shipped.delivered',$order->id) }}" class="btn btn-block btn-success" id="delivered">{{trans('admin.delivered-order')}}</a>
 
                	@endif
 
@@ -182,32 +181,32 @@
   
               <tr>
                 <td width="10%">
-                  <label for=""> Image</label>
+                  <label for=""> {{trans('site.image')}}</label>
                 </td>
 
                  <td width="20%">
-                  <label for=""> Product Name </label>
+                  <label for=""> {{trans('site.product-name')}} </label>
                 </td>
 
              <td width="10%">
-                  <label for=""> Product Code</label>
+                  <label for="">{{trans('site.product-code')}}</label>
                 </td>
 
 
                <td width="10%">
-                  <label for=""> Color </label>
+                  <label for=""> {{trans('site.color')}} </label>
                 </td>
 
                 <td width="10%">
-                  <label for=""> Size </label>
+                  <label for=""> {{trans('site.size')}} </label>
                 </td>
 
                   <td width="10%">
-                  <label for=""> Quantity </label>
+                  <label for=""> {{trans('site.quantity')}} </label>
                 </td>
 
                <td width="10%">
-                  <label for=""> Price </label>
+                  <label for=""> {{trans('site.price')}} </label>
                 </td>
                 
               </tr>
@@ -220,7 +219,7 @@
                 </td>
 
                <td width="20%">
-                  <label for=""> {{ $item->product->product_name_en }}</label>
+                  <label for=""> @if(session()->get('lang') == 'hi') {{ $item->product->product_name_hin }} @else {{ $item->product->product_name_en }} @endif</label>
                 </td>
 
 

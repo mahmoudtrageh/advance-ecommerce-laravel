@@ -57,73 +57,15 @@
             <a href="{{ route('password.request') }}" class="forgot-password pull-right">{{trans('site.forget-password')}}{{trans('site.q-mark')}}</a>
         </div>
         <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{trans('site.login')}}</button>
+        <a type="button" href="{{route('register')}}" class="btn-upper btn btn-primary checkout-page-button">{{trans('site.register')}}</a>
+
     </form>   
 
 
 </div>
 <!-- Sign-in -->
 
-<!-- create a new account -->
-<div class="col-md-6 col-sm-6 create-new-account">
-    <h4 class="checkout-subtitle">{{trans('site.create-new-account')}}</h4>
-   
-    <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">{{trans('site.name')}} <span>*</span></label>
-            <input type="text" id="name" name="name" class="form-control unicase-form-control text-input">
-            @error('name')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror 
-        </div>
-
-        <div class="form-group">
-            <label class="info-title" for="exampleInputEmail2">{{trans('site.email')}} <span>*</span></label>
-            <input type="email" id="email" name="email" class="form-control unicase-form-control text-input">
-            @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-        
-        <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">{{trans('site.phone')}} <span>*</span></label>
-            <input type="text" id="phone" name="phone" class="form-control unicase-form-control text-input" >
-            @error('phone')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-
-        <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">{{trans('site.password')}} <span>*</span></label>
-            <input type="password" id="password" name="password" class="form-control unicase-form-control text-input" >
-            @error('password')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-         <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">{{trans('site.confirm-password')}} <span>*</span></label>
-            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control unicase-form-control text-input" >
-            @error('password_confirmation')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">{{trans('site.register')}}</button>
-    </form>
-    
-    
-</div>  
-<!-- create a new account -->           </div><!-- /.row -->
+       </div><!-- /.row -->
         </div><!-- /.sigin-in-->
         <!-- ============================================== BRANDS CAROUSEL ============================================== -->
 

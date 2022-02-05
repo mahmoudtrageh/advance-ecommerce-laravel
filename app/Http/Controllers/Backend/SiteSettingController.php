@@ -46,7 +46,7 @@ class SiteSettingController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Setting Updated with Image Successfully',
+			'message' => trans('admin.setting-updated-with-image-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -70,7 +70,7 @@ class SiteSettingController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Setting Updated Successfully',
+			'message' => trans('admin.setting-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -102,7 +102,7 @@ class SiteSettingController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Seo Updated Successfully',
+			'message' => trans('admin.seo-updated-successfully'),
 			'alert-type' => 'info'
 		);
 

@@ -23,7 +23,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Category </h3>
+				  <h3 class="box-title">{{trans('admin.edit-category')}} </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -36,7 +36,7 @@
 	 	 
 
 	 <div class="form-group">
-		<h5>Category English  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.category-en')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="category_name_en" class="form-control" value="{{ $category->category_name_en }}" > 
 	 @error('category_name_en') 
@@ -47,7 +47,7 @@
 
 
 	<div class="form-group">
-		<h5>Category Hindi <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.category-ar')}} <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="category_name_hin" class="form-control" value="{{ $category->category_name_hin }}" >
      @error('category_name_hin') 
@@ -58,7 +58,7 @@
 
 
 	<div class="form-group">
-		<h5>Category Icon  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.category-icon')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="category_icon" class="form-control"  value="{{ $category->category_icon }}" >
      @error('category_icon') 
@@ -69,7 +69,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{trans('admin.update')}}">					 
 						</div>
 					</form>
 

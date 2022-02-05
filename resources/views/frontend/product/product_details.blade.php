@@ -129,45 +129,43 @@
 				<div class="row"> 
 					<div class="col-sm-3">
 						 
-   @if($avarage == 0)
-   {{trans('site.no-rating-yet')}} 
-   @elseif($avarage == 1 || $avarage < 2)
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
-   @elseif($avarage == 2 || $avarage < 3)
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
-  @elseif($avarage == 3 || $avarage < 4)
-  <span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-<span class="fa fa-star"></span>
+						@if($avarage == 0)
+						{{trans('site.no-rating-yet')}} 
+						@elseif($avarage == 1 || $avarage < 2)
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+						@elseif($avarage == 2 || $avarage < 3)
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
+						@elseif($avarage == 3 || $avarage < 4)
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+						<span class="fa fa-star"></span>
 
-  @elseif($avarage == 4 || $avarage < 5)
-  <span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star"></span>
-  @elseif($avarage == 5 || $avarage < 5)
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-   @endif
+						@elseif($avarage == 4 || $avarage < 5)
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star"></span>
+						@elseif($avarage == 5 || $avarage < 5)
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						<span class="fa fa-star checked"></span>
+						@endif
 
 
 					</div>
-
-
 
 					<div class="col-sm-8">
 						<div class="reviews">
@@ -593,7 +591,57 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 		<div class="product-info text-left">
 			<h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
 				@if(session()->get('lang') == 'hi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif</a></h3>
-			<div class="rating rateit-small"></div>
+				@php 
+				$reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+			
+				$avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+			
+			@endphp
+						<div class="rating-reviews">
+							   
+					 @if($avarage == 0)
+					 
+					 @elseif($avarage == 1 || $avarage < 2)
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star"></span>
+				  <span class="fa fa-star"></span>
+				  <span class="fa fa-star"></span>
+				  <span class="fa fa-star"></span>
+					 @elseif($avarage == 2 || $avarage < 3)
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star"></span>
+				  <span class="fa fa-star"></span>
+				  <span class="fa fa-star"></span>
+					@elseif($avarage == 3 || $avarage < 4)
+					<span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star"></span>
+				  <span class="fa fa-star"></span>
+				  
+					@elseif($avarage == 4 || $avarage < 5)
+					<span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star"></span>
+					@elseif($avarage == 5 || $avarage < 5)
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+				  <span class="fa fa-star checked"></span>
+					 @endif
+				  
+				  
+				  
+				  
+				  
+							  <div class="reviews">
+								<a href="#" class="lnk">({{ count($reviewcount) }} {{trans('site.reviews')}})</a>
+							  </div>
+						</div><!-- /.rating-reviews -->
 			<div class="description"></div>
 
 

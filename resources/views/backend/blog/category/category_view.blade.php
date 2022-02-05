@@ -14,11 +14,11 @@
 			   
 		 
 
-			<div class="col-8">
+			<div class="col-12">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Blog Category List <span class="badge badge-pill badge-danger"> {{ count($blogcategory) }} </span></h3>
+				  <h3 class="box-title">{{trans('admin.blog-category-list')}} <span class="badge badge-pill badge-danger"> {{ count($blogcategory) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -27,9 +27,9 @@
 						<thead>
 							<tr>
 								 
-								<th>Blog Category En</th>
-								<th>Blog Category Hin </th>
-								<th>Action</th>
+								<th>{{trans('admin.blog-category-en')}}</th>
+								<th>{{trans('admin.blog-category-en')}} </th>
+								<th>{{trans('admin.process')}}</th>
 								 
 							</tr>
 						</thead>
@@ -40,8 +40,8 @@
 		<td>{{ $item->blog_category_name_en }}</td>
 		 <td>{{ $item->blog_category_name_hin }}</td>
 		<td>
- <a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
- <a href="{{ route('category.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+ <a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="{{trans('admin.edit')}}"><i class="fa fa-pencil"></i> </a>
+ <a href="{{ route('category.delete',$item->id) }}" class="btn btn-danger" title="{{trans('admin.delete')}}" id="delete">
  	<i class="fa fa-trash"></i></a>
 		</td>
 							 
@@ -64,11 +64,11 @@
 <!--   ------------ Add Blog Category Page -------- -->
 
 
-          <div class="col-4">
+<div class="col-lg-6 col-md-12">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add Blog Category </h3>
+				  <h3 class="box-title">{{trans('admin.add-blog-category')}} </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -80,7 +80,7 @@
 					   
 
 	 <div class="form-group">
-		<h5>Blog Category English  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.blog-category-en')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="blog_category_name_en" class="form-control" > 
 	 @error('blog_category_name_en') 
@@ -91,7 +91,7 @@
 
 
 	<div class="form-group">
-		<h5>Blog Category Hindi <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.blog-category-ar')}} <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="blog_category_name_hin" class="form-control" >
      @error('blog_category_name_hin') 
@@ -103,7 +103,7 @@
  	 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{trans('admin.add')}}">					 
 						</div>
 					</form>
 

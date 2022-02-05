@@ -28,14 +28,16 @@ class ProductController extends Controller
 	public function StoreProduct(Request $request){
 
     $request->validate([
-      'file' => 'required|mimes:jpeg,png,jpg,zip,pdf|max:2048',
+      'file' => 'mimes:jpeg,png,jpg,zip,pdf|max:2048',
     ]);
 
     if ($files = $request->file('file')) {
       $destinationPath = 'upload/pdf'; // upload path
       $digitalItem = date('YmdHis') . "." . $files->getClientOriginalExtension();
       $files->move($destinationPath,$digitalItem);
-    }
+    } else {
+		$digitalItem = Null;
+	}
  
 
         $image = $request->file('product_thambnail');
@@ -105,7 +107,7 @@ class ProductController extends Controller
 
 
        $notification = array(
-			'message' => 'Product Inserted Successfully',
+			'message' => trans('admin.product-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -177,7 +179,7 @@ class ProductController extends Controller
       ]);
 
           $notification = array(
-			'message' => 'Product Updated Without Image Successfully',
+			'message' => trans('admin.product-updated-without-image-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -208,7 +210,7 @@ class ProductController extends Controller
 	 } // end foreach
 
        $notification = array(
-			'message' => 'Product Image Updated Successfully',
+			'message' => trans('admin.product-image-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -235,7 +237,7 @@ class ProductController extends Controller
     	]);
 
          $notification = array(
-			'message' => 'Product Image Thambnail Updated Successfully',
+			'message' => trans('admin.product-image-thambnail-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -251,7 +253,7 @@ class ProductController extends Controller
      	MultiImg::findOrFail($id)->delete();
 
      	$notification = array(
-			'message' => 'Product Image Deleted Successfully',
+			'message' => trans('admin.product-image-deleted-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -264,7 +266,7 @@ class ProductController extends Controller
      public function ProductInactive($id){
      	Product::findOrFail($id)->update(['status' => 0]);
      	$notification = array(
-			'message' => 'Product Inactive',
+			'message' => trans('admin.product-inactive'),
 			'alert-type' => 'success'
 		);
 
@@ -275,7 +277,7 @@ class ProductController extends Controller
   public function ProductActive($id){
   	Product::findOrFail($id)->update(['status' => 1]);
      	$notification = array(
-			'message' => 'Product Active',
+			'message' => trans('admin.product-active'),
 			'alert-type' => 'success'
 		);
 
@@ -297,7 +299,7 @@ class ProductController extends Controller
      	}
 
      	$notification = array(
-			'message' => 'Product Deleted Successfully',
+			'message' => trans('admin.product-deleted-successfully'),
 			'alert-type' => 'success'
 		);
 

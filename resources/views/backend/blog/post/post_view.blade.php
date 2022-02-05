@@ -13,7 +13,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add Blog Post </h4>
+			  <h4 class="box-title">{{trans('admin.add-post')}} </h4>
 			   
 			</div>
 			<!-- /.box-header -->
@@ -37,7 +37,7 @@
 			<div class="col-md-6">
 
 				 <div class="form-group">
-			<h5>Post Title En <span class="text-danger">*</span></h5>
+			<h5>{{trans('admin.post-title-en')}} <span class="text-danger">*</span></h5>
 			<div class="controls">
 				<input type="text" name="post_title_en" class="form-control" required="">
      @error('post_title_en') 
@@ -52,7 +52,7 @@
 			<div class="col-md-6">
 
 				 <div class="form-group">
-			<h5>Post Title Hin <span class="text-danger">*</span></h5>
+			<h5>{{trans('admin.post-title-ar')}} <span class="text-danger">*</span></h5>
 			<div class="controls">
 				<input type="text" name="post_title_hin" class="form-control" required="">
      @error('post_title_hin') 
@@ -75,10 +75,10 @@
 			<div class="col-md-6">
 
 	 <div class="form-group">
-	<h5>BlogCategory Select <span class="text-danger">*</span></h5>
+	<h5>{{trans('admin.blogcategory-select')}} <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="category_id" class="form-control" required="" >
-			<option value="" selected="" disabled="">Select BlogCategory</option>
+			<option value="" selected="" disabled="">{{trans('admin.select-blogcategory')}}</option>
 		 @foreach($blogcategory as $category)
          <option value="{{ $category->id }}">{{ $category->blog_category_name_en }}</option>	
 			@endforeach
@@ -94,7 +94,7 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Post Main Image  <span class="text-danger">*</span></h5>
+			<h5>{{trans('admin.post-image')}}  <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="file" name="post_image" class="form-control" onChange="mainThamUrl(this)" required="" >
      @error('post_image') 
@@ -124,10 +124,10 @@
 			<div class="col-md-6">
 
 	    <div class="form-group">
-			<h5>Post Details English <span class="text-danger">*</span></h5>
+			<h5>{{trans('admin.post-details-en')}} <span class="text-danger">*</span></h5>
 			<div class="controls">
 	<textarea id="editor1" name="post_details_en" rows="10" cols="80" required="">
-		Post Details English
+		{{trans('admin.post-details-en')}}
 						</textarea>  
 	 		 </div>
 		</div>
@@ -137,10 +137,10 @@
 			<div class="col-md-6">
 
 	     <div class="form-group">
-			<h5>Post Details Hindi <span class="text-danger">*</span></h5>
+			<h5>{{trans('admin.post-details-ar')}} <span class="text-danger">*</span></h5>
 			<div class="controls">
 	<textarea id="editor2" name="post_details_hin" rows="10" cols="80">
-		Post Details Hindi
+		{{trans('admin.post-details-ar')}}
 						</textarea>       
 	 		 </div>
 		</div>
@@ -154,7 +154,7 @@
 	 <hr>
 
 	 	<div class="text-xs-right">
-<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add Post">
+<input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{trans('admin.add')}}">
 						</div>
 					</form>
  

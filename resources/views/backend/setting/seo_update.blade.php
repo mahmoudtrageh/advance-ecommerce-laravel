@@ -9,7 +9,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Seo Setting Page </h4>
+			  <h4 class="box-title">{{trans('admin.seo-setting-page')}} </h4>
 			  
 			</div>
 			<!-- /.box-header -->
@@ -78,7 +78,7 @@
 	  
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{trans('admin.update')}}">					 
 						</div>
 					</form>
 

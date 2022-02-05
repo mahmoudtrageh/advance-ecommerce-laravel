@@ -9,7 +9,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Edit Admin User </h4>
+			  <h4 class="box-title">{{trans('admin.edit-admin')}} </h4>
 			  
 			</div>
 			<!-- /.box-header -->
@@ -31,7 +31,7 @@
 				<div class="col-md-6">
 
 	 <div class="form-group">
-		<h5>Admin User Name  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.name')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="name" class="form-control" value="{{ $adminuser->name }}" > </div>
 	</div>
@@ -43,7 +43,7 @@
 				<div class="col-md-6">
 
 	  <div class="form-group">
-		<h5>Admin Email  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.email')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="email" name="email" class="form-control" value="{{ $adminuser->email }}" > </div>
 	</div>
@@ -59,7 +59,7 @@
 				<div class="col-md-6">
 
 	 <div class="form-group">
-		<h5>Admin User Phone  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.phone')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="phone" class="form-control" value="{{ $adminuser->phone }}" > </div>
 	</div>
@@ -82,7 +82,7 @@
 
 				<div class="col-md-6">
 		<div class="form-group">
-		<h5>Admin User Image <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.image')}} <span class="text-danger">*</span></h5>
 		<div class="controls">
  <input type="file" name="profile_photo_path" class="form-control" id="image"> </div>
 	</div>
@@ -108,26 +108,26 @@
 		<div class="controls">
 			<fieldset>
 				<input type="checkbox" id="checkbox_2" name="brand" value="1" {{ $adminuser->brand == 1 ? 'checked' : '' }}>
-				<label for="checkbox_2">Brand</label>
+				<label for="checkbox_2">{{trans('admin.brand')}}</label>
 			</fieldset>
 			<fieldset>
 				<input type="checkbox" id="checkbox_3" name="category" value="1" {{ $adminuser->category == 1 ? 'checked' : '' }}>
-				<label for="checkbox_3">Category</label>
+				<label for="checkbox_3">{{trans('admin.category')}}</label>
 			</fieldset>
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_4" name="product" value="1" {{ $adminuser->product == 1 ? 'checked' : '' }}>
-				<label for="checkbox_4">Product</label>
+				<label for="checkbox_4">{{trans('admin.product')}}</label>
 			</fieldset>
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_5" name="slider" value="1" {{ $adminuser->slider == 1 ? 'checked' : '' }}>
-				<label for="checkbox_5">Slider</label>
+				<label for="checkbox_5">{{trans('admin.slider')}}</label>
 			</fieldset>
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_6" name="coupons" value="1" {{ $adminuser->coupons == 1 ? 'checked' : '' }}>
-				<label for="checkbox_6">Coupons</label>
+				<label for="checkbox_6">{{trans('admin.coupons')}}</label>
 			</fieldset>
 		</div>
 	</div>
@@ -141,27 +141,27 @@
 		<div class="controls">
 			<fieldset>
 				<input type="checkbox" id="checkbox_7" name="shipping" value="1" {{ $adminuser->shipping == 1 ? 'checked' : '' }}>
-				<label for="checkbox_7">Shipping</label>
+				<label for="checkbox_7">{{trans('admin.shipping')}}</label>
 			</fieldset>
 			<fieldset>
 				<input type="checkbox" id="checkbox_8" name="blog" value="1" {{ $adminuser->blog == 1 ? 'checked' : '' }}>
-				<label for="checkbox_8">Blog</label>
+				<label for="checkbox_8">{{trans('admin.blog')}}</label>
 			</fieldset>
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_9" name="setting" value="1" {{ $adminuser->setting == 1 ? 'checked' : '' }}>
-				<label for="checkbox_9">Setting</label>
+				<label for="checkbox_9">{{trans('admin.settings')}}</label>
 			</fieldset>
 
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_10" name="returnorder" value="1" {{ $adminuser->returnorder == 1 ? 'checked' : '' }}>
-				<label for="checkbox_10">Return Order</label>
+				<label for="checkbox_10">{{trans('admin.return-order')}}</label>
 			</fieldset>
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_11" name="review" value="1" {{ $adminuser->review == 1 ? 'checked' : '' }}>
-				<label for="checkbox_11">	Review</label>
+				<label for="checkbox_11">	{{trans('admin.reviews')}}</label>
 			</fieldset>
 		</div>
 	</div>
@@ -176,26 +176,26 @@
 		<div class="controls">
 			<fieldset>
 				<input type="checkbox" id="checkbox_12" name="orders" value="1" {{ $adminuser->orders == 1 ? 'checked' : '' }}>
-				<label for="checkbox_12">Orders</label>
+				<label for="checkbox_12">{{trans('admin.orders')}}</label>
 			</fieldset>
 			<fieldset>
 				<input type="checkbox" id="checkbox_13" name="stock" value="1" {{ $adminuser->stock == 1 ? 'checked' : '' }}>
-				<label for="checkbox_13">Stock</label>
+				<label for="checkbox_13">{{trans('admin.stock')}}</label>
 			</fieldset>
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_14" name="reports" value="1" {{ $adminuser->reports == 1 ? 'checked' : '' }}>
-				<label for="checkbox_14">Reports</label>
+				<label for="checkbox_14">{{trans('admin.reports')}}</label>
 			</fieldset>
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_15" name="alluser" value="1" {{ $adminuser->alluser == 1 ? 'checked' : '' }}>
-				<label for="checkbox_15">Alluser</label>
+				<label for="checkbox_15">{{trans('admin.users')}}</label>
 			</fieldset>
 
 			<fieldset>
 				<input type="checkbox" id="checkbox_16" name="adminuserrole" value="1" {{ $adminuser->adminuserrole == 1 ? 'checked' : '' }}>
-				<label for="checkbox_16">Adminuserrole</label>
+				<label for="checkbox_16">{{trans('admin.roles')}}</label>
 			</fieldset>
 		</div>
 			</div>
@@ -207,7 +207,7 @@
 	  
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Admin User">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{trans('admin.update')}}">					 
 						</div>
 					</form>
 

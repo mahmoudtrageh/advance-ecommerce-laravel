@@ -21,7 +21,7 @@ class ReturnController extends Controller
     	Order::where('id',$order_id)->update(['return_order' => 2]);
 
     	$notification = array(
-            'message' => 'Return Order Successfully',
+            'message' => trans('admin.return-order-successfully'),
             'alert-type' => 'success'
         );
 

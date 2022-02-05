@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Product List <span class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
+				  <h3 class="box-title">{{trans('admin.product-list')}} <span class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,13 +26,13 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Image </th>
-								<th>Product En</th>
-								<th>Product Price </th>
-								<th>Quantity </th>
-								<th>Discount </th>
-								<th>Status </th>
-								<th>Action</th>
+								<th>{{trans('admin.image')}} </th>
+								<th>{{trans('admin.product')}}</th>
+								<th>{{trans('site.price')}} </th>
+								<th>{{trans('site.quantity')}} </th>
+								<th>{{trans('admin.discount')}} </th>
+								<th>{{trans('admin.status')}} </th>
+								<th>{{trans('admin.process')}}</th>
 								 
 							</tr>
 						</thead>
@@ -40,13 +40,13 @@
 	 @foreach($products as $item)
 	 <tr>
 		<td> <img src="{{ asset($item->product_thambnail) }}" style="width: 60px; height: 50px;">  </td>
-		<td>{{ $item->product_name_en }}</td>
+		<td>@if(session()->get('lang') == 'hi') {{ $item->product_name_hin }} @else {{ $item->product_name_en }} @endif</td>
 		 <td>{{ $item->selling_price }} $</td>
 		 <td>{{ $item->product_qty }} Pic</td>
 
 		 <td> 
 		 	@if($item->discount_price == NULL)
-		 	<span class="badge badge-pill badge-danger">No Discount</span>
+		 	<span class="badge badge-pill badge-danger">{{trans('admin.no-discount')}}</span>
 
 		 	@else
 		 	@php
@@ -63,26 +63,26 @@
 
 		 <td>
 		 	@if($item->status == 1)
-		 	<span class="badge badge-pill badge-success"> Active </span>
+		 	<span class="badge badge-pill badge-success"> {{trans('admin.active')}} </span>
 		 	@else
-           <span class="badge badge-pill badge-danger"> InActive </span>
+           <span class="badge badge-pill badge-danger"> {{trans('admin.inactive')}} </span>
 		 	@endif
 
 		 </td>
 
 
 		<td width="30%">
- <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i> </a>
+ <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary" title="{{trans('admin.product-details')}}"><i class="fa fa-eye"></i> </a>
 
- <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+ <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="{{trans('admin.edit')}}"><i class="fa fa-pencil"></i> </a>
 
- <a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+ <a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger" title="{{trans('admin.delete')}}" id="delete">
  	<i class="fa fa-trash"></i></a>
 
 @if($item->status == 1)
- <a href="{{ route('product.inactive',$item->id) }}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
+ <a href="{{ route('product.inactive',$item->id) }}" class="btn btn-danger" title="{{trans('admin.active')}}"><i class="fa fa-arrow-down"></i> </a>
 	 @else
- <a href="{{ route('product.active',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i> </a>
+ <a href="{{ route('product.active',$item->id) }}" class="btn btn-success" title="{{trans('admin.inactive')}}"><i class="fa fa-arrow-up"></i> </a>
 	 @endif
 
 

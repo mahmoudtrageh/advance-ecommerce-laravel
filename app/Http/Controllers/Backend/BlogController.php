@@ -25,8 +25,8 @@ class BlogController extends Controller
     		'blog_category_name_hin' => 'required',
     		 
     	],[
-    		'blog_category_name_en.required' => 'Input Blog Category English Name',
-    		'blog_category_name_hin.required' => 'Input Blog Category Hindi Name',
+    		'blog_category_name_en.required' => trans('admin.add-blog-category-en-name'),
+    		'blog_category_name_hin.required' => trans('admin.add-blog-category-ar-name'),
     	]);
 
     	 
@@ -42,7 +42,7 @@ class BlogController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Blog Category Inserted Successfully',
+			'message' => trans('admin.blog-category-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -77,7 +77,7 @@ public function BlogCategoryUpdate(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'Blog Category Updated Successfully',
+			'message' => trans('admin.blog-category-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -112,8 +112,8 @@ public function BlogCategoryUpdate(Request $request){
     		'post_title_hin' => 'required',
     		'post_image' => 'required',
     	],[
-    		'post_title_en.required' => 'Input Post Title English Name',
-    		'post_title_hin.required' => 'Input Post Title Hindi Name',
+    		'post_title_en.required' => trans('admin.add-post-title-en-name'),
+    		'post_title_hin.required' => trans('admin.add-post-title-ar-name'),
     	]);
 
     	$image = $request->file('post_image');
@@ -135,7 +135,7 @@ public function BlogCategoryUpdate(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'Blog Post Inserted Successfully',
+			'message' => trans('admin.blog-post-added-successfully'),
 			'alert-type' => 'success'
 		);
 

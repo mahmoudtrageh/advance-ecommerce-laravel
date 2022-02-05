@@ -32,7 +32,7 @@ class ReviewController extends Controller
     	]);
 
     	$notification = array(
-			'message' => 'Review Will Approve By Admin',
+			'message' => trans('site.review-will-approve-admin'),
 			'alert-type' => 'success'
 		);
 
@@ -57,7 +57,7 @@ class ReviewController extends Controller
     	Review::where('id',$id)->update(['status' => 1]);
 
     	$notification = array(
-            'message' => 'Review Approved Successfully',
+            'message' => trans('site.review-approved-success'),
             'alert-type' => 'success'
         );
 
@@ -77,7 +77,7 @@ class ReviewController extends Controller
     	Review::findOrFail($id)->delete();
 
     	$notification = array(
-            'message' => 'Review Delete Successfully',
+            'message' => trans('site.review-deleted-success'),
             'alert-type' => 'success'
         );
 

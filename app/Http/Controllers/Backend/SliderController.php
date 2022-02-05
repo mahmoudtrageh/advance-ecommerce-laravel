@@ -24,7 +24,7 @@ class SliderController extends Controller
     		 
     		'slider_img' => 'required',
     	],[
-    		'slider_img.required' => 'Plz Select One Image',
+    		'slider_img.required' => trans('admin.plz-select-one-image'),
     		 
     	]);
 
@@ -41,7 +41,7 @@ class SliderController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Slider Inserted Successfully',
+			'message' => trans('admin.slider-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -79,7 +79,7 @@ public function SliderUpdate(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'Slider Updated Successfully',
+			'message' => trans('admin.slider-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -95,7 +95,7 @@ public function SliderUpdate(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'Slider Updated Without Image Successfully',
+			'message' => trans('admin.slider-updated-without-image'),
 			'alert-type' => 'info'
 		);
 
@@ -112,7 +112,7 @@ public function SliderUpdate(Request $request){
     	Slider::findOrFail($id)->delete();
 
     	$notification = array(
-			'message' => 'Slider Delectd Successfully',
+			'message' => trans('admin.slider-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -125,7 +125,7 @@ public function SliderUpdate(Request $request){
     	Slider::findOrFail($id)->update(['status' => 0]);
 
     	$notification = array(
-			'message' => 'Slider Inactive Successfully',
+			'message' => trans('admin.slider-inactive-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -138,7 +138,7 @@ public function SliderUpdate(Request $request){
     	Slider::findOrFail($id)->update(['status' => 1]);
 
     	$notification = array(
-			'message' => 'Slider Active Successfully',
+			'message' => trans('admin.slider-active-successfully'),
 			'alert-type' => 'info'
 		);
 

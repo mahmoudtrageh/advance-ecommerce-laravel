@@ -61,7 +61,7 @@ class AllUserController extends Controller
 
 
       $notification = array(
-            'message' => 'Return Request Send Successfully',
+            'message' => trans('site.return-request-sent-success'),
             'alert-type' => 'success'
         );
 
@@ -107,7 +107,7 @@ class AllUserController extends Controller
         }else{
 
             $notification = array(
-            'message' => 'Invoice Code Is Invalid',
+            'message' => trans('site.invoice-code-invalid'),
             'alert-type' => 'error'
         );
 

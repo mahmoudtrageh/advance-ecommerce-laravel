@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{ asset('backend/images/favicon.ico') }}">
 
-    <title>Easy Ecommerce Admin - Dashboard</title>
+    <title>{{trans('admin.site-name')}} - {{trans('admin.dashboard')}}</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
@@ -22,14 +22,32 @@
 	<link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
 
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-     
+
    @if(session()->get('lang') == 'hi')
    <style>
+
      .user-menu .dropdown-menu {
       text-align: right;
      }
-   </style>
-   @endif
+     .content-header .page-title {
+      margin: 0 15px 0 15px;
+      padding: 7px 25px 7px 25px;
+     }
+     </style>
+   @endif 
+
+   @if(session()->get('lang') == 'en')
+   <style>
+
+     .fa-angle-left:before {
+      content: "\f105";
+     }
+     .sidebar-menu .fa-angle-left {
+       float: right;
+     }
+     </style>
+   @endif 
+  
   </head>  
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -38,12 +56,8 @@
 
   @include('admin.body.header')
   
-  @if(session()->get('lang') == 'hi')
-  <!-- Left side column. contains the logo and sidebar -->
-  @include('admin.body.sidebar-right')
-  @else
   @include('admin.body.sidebar')
-  @endif
+
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -121,8 +135,16 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+@if(session()->get('lang') == 'hi')
+
  <script src="{{ asset('backend/js/code.js') }}"></script>
 	
+ @else 
+
+ <script src="{{ asset('backend/js/code-en.js') }}"></script>
+
+ @endif
+
 	
 </body>
 </html>

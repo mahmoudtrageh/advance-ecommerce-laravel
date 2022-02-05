@@ -48,6 +48,7 @@ $seo = App\Models\Seo::find(1);
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
+
 <style>
     .outer-top-xs{
         margin-bottom: 20px;
@@ -58,6 +59,9 @@ $seo = App\Models\Seo::find(1);
     .newsletter{
         background: transparent;
         color:#555555;
+    }
+    .checked {
+  color: orange;
     }
 </style>
 @if(session()->get('lang') == 'hi')
@@ -176,6 +180,9 @@ $seo = App\Models\Seo::find(1);
 }
 .heading-title{
     text-align: right !important;
+}
+.rating-reviews {
+    text-align: right;
 }
 </style>
 @endif
@@ -1236,6 +1243,9 @@ wishlist();
 
      }
 
+var h = window.innerHeight;
+
+$('.body-content').css('min-height', h/2);
 
 </script>
 

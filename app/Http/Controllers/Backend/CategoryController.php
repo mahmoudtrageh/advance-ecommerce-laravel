@@ -21,8 +21,8 @@ class CategoryController extends Controller
     		'category_name_hin' => 'required',
     		'category_icon' => 'required',
     	],[
-    		'category_name_en.required' => 'Input Category English Name',
-    		'category_name_hin.required' => 'Input Category Hindi Name',
+    		'category_name_en.required' => trans('admin.add-category-en-name'),
+    		'category_name_hin.required' => trans('admin.add-category-ar-name'),
     	]);
 
     	 
@@ -37,7 +37,7 @@ class CategoryController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Category Inserted Successfully',
+			'message' => trans('admin.category-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -67,7 +67,7 @@ class CategoryController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Category Updated Successfully',
+			'message' => trans('admin.category-updated-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -82,7 +82,7 @@ class CategoryController extends Controller
     	Category::findOrFail($id)->delete();
 
     	$notification = array(
-			'message' => 'Category Deleted Successfully',
+			'message' => trans('admin.category-deleted-successfully'),
 			'alert-type' => 'success'
 		);
 

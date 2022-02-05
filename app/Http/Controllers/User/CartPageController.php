@@ -40,7 +40,7 @@ class CartPageController extends Controller
            Session::forget('coupon');
         }
 
-        return response()->json(['success' => 'Successfully Remove From Cart']);
+        return response()->json(['success' => trans('site.success-remove-cart')]);
     }
 
 

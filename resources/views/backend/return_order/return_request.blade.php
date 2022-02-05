@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Return Orders List</h3>
+				  <h3 class="box-title">{{trans('admin.return-orders-list')}}</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,12 +26,12 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Date </th>
-								<th>Invoice </th>
-								<th>Amount </th>
-								<th>Payment </th>
-								<th>Status </th>
-								<th>Action</th>
+								<th>{{trans('admin.date')}} </th>
+								<th>{{trans('admin.invoice')}} </th>
+								<th>{{trans('admin.amount')}} </th>
+								<th>{{trans('admin.payment')}} </th>
+								<th>{{trans('admin.status')}} </th>
+								<th>{{trans('admin.process')}}</th>
 								 
 							</tr>
 						</thead>
@@ -45,15 +45,15 @@
 		<td> {{ $item->payment_method }}  </td>
 		<td>
 		@if($item->return_order == 1)
-      <span class="badge badge-pill badge-primary">Pending </span>
+      <span class="badge badge-pill badge-primary">{{trans('admin.pending')}} </span>
        @elseif($item->return_order == 2)
-       <span class="badge badge-pill badge-success">Success </span>
+       <span class="badge badge-pill badge-success">{{trans('admin.success')}} </span>
 		@endif
 
 		  </td>
 
 		<td width="25%">
-  <a href="{{ route('return.approve',$item->id) }}" class="btn btn-danger">Approve </a>
+  <a href="{{ route('return.approve',$item->id) }}" class="btn btn-danger">{{trans('admin.approve')}} </a>
 		</td>
 							 
 	 </tr>

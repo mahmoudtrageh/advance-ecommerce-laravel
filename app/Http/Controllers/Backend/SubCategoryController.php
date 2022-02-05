@@ -26,8 +26,8 @@ class SubCategoryController extends Controller
     		'subcategory_name_en' => 'required',
     		'subcategory_name_hin' => 'required',
     	],[
-    		'category_id.required' => 'Please select Any option',
-    		'subcategory_name_en.required' => 'Input SubCategory English Name',
+    		'category_id.required' => trans('admin.plz-select-any-option'),
+    		'subcategory_name_en.required' => trans('admin.add-subcategory-en-name'),
     	]);
 
     	 
@@ -43,7 +43,7 @@ class SubCategoryController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'SubCategory Inserted Successfully',
+			'message' => trans('admin.subcategory-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -76,7 +76,7 @@ class SubCategoryController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'SubCategory Updated Successfully',
+			'message' => trans('admin.subcategory-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -91,7 +91,7 @@ class SubCategoryController extends Controller
     	SubCategory::findOrFail($id)->delete();
 
     	$notification = array(
-			'message' => 'SubCategory Deleted Successfully',
+			'message' => trans('admin.subcategory-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -134,8 +134,8 @@ public function SubSubCategoryStore(Request $request){
     		'subsubcategory_name_en' => 'required',
     		'subsubcategory_name_hin' => 'required',
     	],[
-    		'category_id.required' => 'Please select Any option',
-    		'subsubcategory_name_en.required' => 'Input SubSubCategory English Name',
+    		'category_id.required' => trans('admin.plz-select-any-option'),
+    		'subsubcategory_name_en.required' => trans('admin.add-subsubcategory-en-name'),
     	]);
 
     	 
@@ -152,7 +152,7 @@ public function SubSubCategoryStore(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'Sub-SubCategory Inserted Successfully',
+			'message' => trans('admin.subsubcategory-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -188,7 +188,7 @@ public function SubSubCategoryStore(Request $request){
     	]);
 
 	    $notification = array(
-			'message' => 'Sub-SubCategory Update Successfully',
+			'message' => trans('admin.subsubcategory-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -201,7 +201,7 @@ public function SubSubCategoryStore(Request $request){
 
     	SubSubCategory::findOrFail($id)->delete();
     	 $notification = array(
-			'message' => 'Sub-SubCategory Deleted Successfully',
+			'message' => trans('admin.subsubcategory-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 

@@ -14,11 +14,11 @@
 			   
 		 
 
-			<div class="col-8">
+			<div class="col-12">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">District List</h3>
+				  <h3 class="box-title">{{trans('admin.cities-list')}}</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,9 +26,9 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Division Name </th> 
-								<th>District Name </th>
-								<th>Action</th>
+								<th>{{trans('admin.province-name')}} </th> 
+								<th>{{trans('admin.city-name')}}</th>
+								<th>{{trans('admin.process')}}</th>
 								 
 							</tr>
 						</thead>
@@ -39,8 +39,8 @@
 		<td> {{ $item->district_name }}  </td> 
 
 		<td width="40%">
- <a href="{{ route('district.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
- <a href="{{ route('district.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+ <a href="{{ route('district.edit',$item->id) }}" class="btn btn-info" title="{{trans('admin.edit')}}"><i class="fa fa-pencil"></i> </a>
+ <a href="{{ route('district.delete',$item->id) }}" class="btn btn-danger" title="{{trans('admin.delete')}}" id="delete">
  	<i class="fa fa-trash"></i></a>
 		</td>
 							 
@@ -63,11 +63,11 @@
 <!--   ------------ Add District Page -------- -->
 
 
-          <div class="col-4">
+<div class="col-lg-6 col-md-12">
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Add District </h3>
+				  <h3 class="box-title">{{trans('admin.add-city')}} </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -80,10 +80,10 @@
 
 
 <div class="form-group">
-	<h5>Division Select <span class="text-danger">*</span></h5>
+	<h5>{{trans('admin.select-province')}} <span class="text-danger">*</span></h5>
 	<div class="controls">
 		<select name="division_id" class="form-control"  >
-			<option value="" selected="" disabled="">Select Division</option>
+			<option value="" selected="" disabled="">{{trans('admin.select-province')}}</option>
 			@foreach($division as $div)
 			<option value="{{ $div->id }}">{{ $div->division_name }}</option>	
 			@endforeach
@@ -97,7 +97,7 @@
 
 
 	 <div class="form-group">
-		<h5>District Name  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.city-name')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="district_name" class="form-control" > 
 	 @error('district_name') 
@@ -109,7 +109,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{trans('admin.add')}}">					 
 						</div>
 					</form>
 

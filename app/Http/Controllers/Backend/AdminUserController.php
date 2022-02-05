@@ -34,7 +34,6 @@ class AdminUserController extends Controller
     	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
     	Image::make($image)->resize(225,225)->save('upload/admin_images/'.$name_gen);
     	$save_url = 'upload/admin_images/'.$name_gen;
-
 	Admin::insert([
 		'name' => $request->name,
 		'email' => $request->email,
@@ -65,7 +64,7 @@ class AdminUserController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Admin User Created Successfully',
+			'message' => trans('admin.admin-created-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -127,7 +126,7 @@ class AdminUserController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Admin User Updated Successfully',
+			'message' => trans('admin.admin-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -164,7 +163,7 @@ class AdminUserController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Admin User Updated Successfully',
+			'message' => trans('admin.admin-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -184,7 +183,7 @@ class AdminUserController extends Controller
  		Admin::findOrFail($id)->delete();
 
  		 $notification = array(
-			'message' => 'Admin User Deleted Successfully',
+			'message' => trans('admin.admin-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 

@@ -81,7 +81,7 @@ class IndexController extends Controller
 		$data->save();
 
 		$notification = array(
-			'message' => 'User Profile Updated Successfully',
+			'message' => trans('site.user-profile-updated-success'),
 			'alert-type' => 'success'
 		);
 

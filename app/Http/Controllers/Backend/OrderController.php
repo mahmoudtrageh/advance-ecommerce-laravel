@@ -93,7 +93,7 @@ class OrderController extends Controller
       Order::findOrFail($order_id)->update(['status' => 'confirm']);
 
       $notification = array(
-			'message' => 'Order Confirm Successfully',
+			'message' => trans('admin.order-confirm-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -111,7 +111,7 @@ class OrderController extends Controller
       Order::findOrFail($order_id)->update(['status' => 'processing']);
 
       $notification = array(
-			'message' => 'Order Processing Successfully',
+			'message' => trans('admin.order-processing-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -127,7 +127,7 @@ class OrderController extends Controller
       Order::findOrFail($order_id)->update(['status' => 'picked']);
 
       $notification = array(
-			'message' => 'Order Picked Successfully',
+			'message' => trans('admin.order-picked-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -142,7 +142,7 @@ class OrderController extends Controller
       Order::findOrFail($order_id)->update(['status' => 'shipped']);
 
       $notification = array(
-			'message' => 'Order Shipped Successfully',
+			'message' => trans('admin.order-shipped-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -163,7 +163,7 @@ class OrderController extends Controller
       Order::findOrFail($order_id)->update(['status' => 'delivered']);
 
       $notification = array(
-			'message' => 'Order Delivered Successfully',
+			'message' => trans('admin.order-delivered-successfully'),
 			'alert-type' => 'success'
 		);
 

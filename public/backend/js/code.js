@@ -4,24 +4,25 @@ $(function(){
         var link = $(this).attr("href");
 
   
-                  Swal.fire({
-                    title: 'Are you sure?',
-                    text: "Delete This Data?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      window.location.href = link
-                      Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      )
-                    }
-                  }) 
+        Swal.fire({
+          title: 'هل أنت متأكد؟',
+          text: "حذف تلك البيانات؟",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'نعم، احذفها',
+          cancelButtonText: 'الغاء'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = link
+            Swal.fire(
+              'تم الحذف!',
+              'تم الحذف بنجاح!',
+              'success'
+            )
+          }
+        }) 
 
 
     });
@@ -38,19 +39,20 @@ $(function(){
 
   
                   Swal.fire({
-                    title: 'Are you sure to Confirm?',
-                    text: "Once Confirm, You will not be able to pending again",
+                    title: 'هل أنت متأكد من التأكيد؟',
+                    text: "بمجرد التأكيد لن تتمكن من التراجع",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Confirm!'
+                    confirmButtonText: 'نعم، أكد!',
+                    cancelButtonText: 'الغاء'
                   }).then((result) => {
                     if (result.isConfirmed) {
                       window.location.href = link
                       Swal.fire(
-                        'Confirm!',
-                        'Confirm Changes',
+                        'تأكيد!',
+                        'تم التأكيد!',
                         'success'
                       )
                     }
@@ -71,19 +73,20 @@ $(function(){
 
   
                   Swal.fire({
-                    title: 'Are you sure to Processing?',
-                    text: "Once Processing, You will not be able to pending again",
+                    title: 'هل أنت متأكد من المعالجة؟',
+                    text: "بمجرد المعالجة لن تتمكن من التراجع!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Processing!'
+                    confirmButtonText: 'نعم، متأكد!',
+                    cancelButtonText: 'الغاء'
                   }).then((result) => {
                     if (result.isConfirmed) {
                       window.location.href = link
                       Swal.fire(
-                        'Processing!',
-                        'Processing Changes',
+                        'معالجة!',
+                        'تمت المعالجة!',
                         'success'
                       )
                     }
@@ -104,19 +107,21 @@ $(function(){
 
   
                   Swal.fire({
-                    title: 'Are you sure to Picked?',
-                    text: "Once Picked, You will not be able to pending again",
+                    title: 'هل أنت متأكد من الإلتقاط؟',
+                    text: "بمجرد إلتقاط المنتج لن تتمكن من التراجع!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, Picked!'
+                    confirmButtonText: 'نعم، متأكد',
+                    cancelButtonText: 'الغاء'
+
                   }).then((result) => {
                     if (result.isConfirmed) {
                       window.location.href = link
                       Swal.fire(
-                        'Picked!',
-                        'Picked Changes',
+                        'التقاط!',
+                        'تم الإلتقاط!',
                         'success'
                       )
                     }
@@ -137,19 +142,21 @@ $(function(){
 
   
                   Swal.fire({
-                    title: 'Are you sure to shipped?',
-                    text: "Once shipped, You will not be able to pending again",
+                    title: 'هل أنت متأكد من الشحن؟',
+                    text: "بمجرد الشحن لن تتمكن من التراجع!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, shipped!'
+                    confirmButtonText: 'نعم، متأكد',
+                    cancelButtonText: 'الغاء'
+
                   }).then((result) => {
                     if (result.isConfirmed) {
                       window.location.href = link
                       Swal.fire(
-                        'shipped!',
-                        'shipped Changes',
+                        'شحن!',
+                        'تم الشحن!',
                         'success'
                       )
                     }
@@ -171,19 +178,21 @@ $(function(){
 
   
                   Swal.fire({
-                    title: 'Are you sure to delivered?',
-                    text: "Once delivered, You will not be able to pending again",
+                    title: 'هل أنت متأكد من التوصيل؟',
+                    text: "بمجرد التوصيل لن تتمكن من التراجع!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delivered!'
+                    confirmButtonText: 'نعم، متأكد!',
+                    cancelButtonText: 'الغاء'
+
                   }).then((result) => {
                     if (result.isConfirmed) {
                       window.location.href = link
                       Swal.fire(
-                        'delivered!',
-                        'delivered Changes',
+                        'توصيل!',
+                        'تم التوصيل!',
                         'success'
                       )
                     }

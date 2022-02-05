@@ -14,6 +14,7 @@ use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderMail;
+use App\Mail\OrderMailEn;
 
 class CashController extends Controller
 {
@@ -67,7 +68,14 @@ class CashController extends Controller
      	    
      	];
 
-     	Mail::to($request->email)->send(new OrderMail($data));
+		 if(session()->get('lang') == 'hi'){
+			Mail::to($request->email)->send(new OrderMail($data));
+
+		 } else {
+			Mail::to($request->email)->send(new OrderMailEn($data));
+
+		 }
+
 
      // End Send Email 
 
@@ -94,7 +102,7 @@ class CashController extends Controller
      Cart::destroy();
 
      $notification = array(
-			'message' => 'Your Order Place Successfully',
+			'message' => trans('site.your-order-place-success'),
 			'alert-type' => 'success'
 		);
 

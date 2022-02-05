@@ -24,7 +24,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Edit Brand </h3>
+				  <h3 class="box-title">{{trans('admin.edit-brand')}} </h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -37,7 +37,7 @@
 	 <input type="hidden" name="old_image" value="{{ $brand->brand_image }}">			   
 
 	 <div class="form-group">
-		<h5>Brand Name English  <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.brand-name-en')}}  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text"  name="brand_name_en" class="form-control" value="{{ $brand->brand_name_en }}" > 
 	 @error('brand_name_en') 
@@ -48,7 +48,7 @@
 
 
 	<div class="form-group">
-		<h5>Brand Name Hindi <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.brand-name-ar')}} <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="brand_name_hin" class="form-control" value="{{ $brand->brand_name_hin }}" >
      @error('brand_name_hin') 
@@ -60,7 +60,7 @@
 
 
 	<div class="form-group">
-		<h5>Brand Image <span class="text-danger">*</span></h5>
+		<h5>{{trans('admin.brand-image')}}<span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="file" name="brand_image" class="form-control" >
      @error('brand_image') 
@@ -71,7 +71,7 @@
 					 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="{{trans('admin.update')}}">					 
 						</div>
 					</form>
 

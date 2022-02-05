@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Product Stock List <span class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
+				  <h3 class="box-title">{{trans('admin.product-stock-list')}} <span class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -26,12 +26,12 @@
 					  <table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>Image </th>
-								<th>Product En</th>
-								<th>Product Price </th>
-								<th>Quantity </th>
-								<th>Discount </th>
-								<th>Status </th>
+								<th>{{trans('admin.image')}} </th>
+								<th>{{trans('admin.product')}}</th>
+								<th>{{trans('site.price')}} </th>
+								<th>{{trans('site.quantity')}} </th>
+								<th>{{trans('admin.discount')}} </th>
+								<th>{{trans('admin.status')}} </th>
 								 
 								 
 							</tr>
@@ -40,13 +40,13 @@
 	 @foreach($products as $item)
 	 <tr>
 		<td> <img src="{{ asset($item->product_thambnail) }}" style="width: 60px; height: 50px;">  </td>
-		<td>{{ $item->product_name_en }}</td>
+		<td>@if(session()->get('lang') == 'hi'){{ $item->product_name_hin }} @else {{ $item->product_name_en }} @endif</td>
 		 <td>{{ $item->selling_price }} $</td>
-		 <td>{{ $item->product_qty }} Pic</td>
+		 <td>{{ $item->product_qty }} {{trans('admin.pic')}}</td>
 
 		 <td> 
 		 	@if($item->discount_price == NULL)
-		 	<span class="badge badge-pill badge-danger">No Discount</span>
+		 	<span class="badge badge-pill badge-danger">{{trans('admin.no-discount')}}</span>
 
 		 	@else
 		 	@php
@@ -63,9 +63,9 @@
 
 		 <td>
 		 	@if($item->status == 1)
-		 	<span class="badge badge-pill badge-success"> Active </span>
+		 	<span class="badge badge-pill badge-success"> {{trans('admin.active')}} </span>
 		 	@else
-           <span class="badge badge-pill badge-danger"> InActive </span>
+           <span class="badge badge-pill badge-danger"> {{trans('admin.inactive')}} </span>
 		 	@endif
 
 		 </td>

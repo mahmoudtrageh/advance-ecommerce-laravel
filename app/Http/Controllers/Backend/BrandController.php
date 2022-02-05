@@ -24,8 +24,8 @@ class BrandController extends Controller
     		'brand_name_hin' => 'required',
     		'brand_image' => 'required',
     	],[
-    		'brand_name_en.required' => 'Input Brand English Name',
-    		'brand_name_hin.required' => 'Input Brand Hindi Name',
+    		'brand_name_en.required' => trans('admin.add-brand-en-name'),
+    		'brand_name_hin.required' => trans('admin.add-brand-ar-name'),
     	]);
 
     	$image = $request->file('brand_image');
@@ -43,7 +43,7 @@ class BrandController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Brand Inserted Successfully',
+			'message' => trans('admin.brand-added-successfully'),
 			'alert-type' => 'success'
 		);
 
@@ -83,7 +83,7 @@ class BrandController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Brand Updated Successfully',
+			'message' => trans('admin.brand-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -101,7 +101,7 @@ class BrandController extends Controller
     	]);
 
 	    $notification = array(
-			'message' => 'Brand Updated Successfully',
+			'message' => trans('admin.brand-updated-successfully'),
 			'alert-type' => 'info'
 		);
 
@@ -121,7 +121,7 @@ class BrandController extends Controller
     	Brand::findOrFail($id)->delete();
 
     	 $notification = array(
-			'message' => 'Brand Deleted Successfully',
+			'message' => trans('admin.brand-deleted-successfully'),
 			'alert-type' => 'info'
 		);
 
